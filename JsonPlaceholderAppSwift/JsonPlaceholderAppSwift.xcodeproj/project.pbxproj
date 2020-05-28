@@ -61,7 +61,7 @@
 		D83A701C248020AD001ED298 = {
 			isa = PBXGroup;
 			children = (
-				D83A7027248020AD001ED298 /* JsonPlaceholderAppSwift */,
+				D83A7027248020AD001ED298 /* Sources */,
 				D83A703E248020AE001ED298 /* JsonPlaceholderAppSwiftTests */,
 				D83A7026248020AD001ED298 /* Products */,
 			);
@@ -76,18 +76,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D83A7027248020AD001ED298 /* JsonPlaceholderAppSwift */ = {
+		D83A7027248020AD001ED298 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D83A7028248020AD001ED298 /* AppDelegate.swift */,
-				D83A702A248020AD001ED298 /* SceneDelegate.swift */,
-				D83A702C248020AD001ED298 /* ViewController.swift */,
-				D83A702E248020AD001ED298 /* Main.storyboard */,
-				D83A7031248020AE001ED298 /* Assets.xcassets */,
-				D83A7033248020AE001ED298 /* LaunchScreen.storyboard */,
-				D83A7036248020AE001ED298 /* Info.plist */,
+				D83A704A24802208001ED298 /* Infraestructure */,
+				D83A704B2480222F001ED298 /* Interface */,
 			);
-			path = JsonPlaceholderAppSwift;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		D83A703E248020AE001ED298 /* JsonPlaceholderAppSwiftTests */ = {
@@ -97,6 +92,51 @@
 				D83A7041248020AE001ED298 /* Info.plist */,
 			);
 			path = JsonPlaceholderAppSwiftTests;
+			sourceTree = "<group>";
+		};
+		D83A704A24802208001ED298 /* Infraestructure */ = {
+			isa = PBXGroup;
+			children = (
+				D83A7028248020AD001ED298 /* AppDelegate.swift */,
+				D83A702A248020AD001ED298 /* SceneDelegate.swift */,
+				D83A704C2480224C001ED298 /* Resources */,
+			);
+			path = Infraestructure;
+			sourceTree = "<group>";
+		};
+		D83A704B2480222F001ED298 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				D83A704E2480227B001ED298 /* Scenes */,
+				D83A7036248020AE001ED298 /* Info.plist */,
+				D83A7033248020AE001ED298 /* LaunchScreen.storyboard */,
+				D83A702E248020AD001ED298 /* Main.storyboard */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		D83A704C2480224C001ED298 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D83A704D24802257001ED298 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D83A704D24802257001ED298 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D83A7031248020AE001ED298 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		D83A704E2480227B001ED298 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D83A702C248020AD001ED298 /* ViewController.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
