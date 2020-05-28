@@ -2,8 +2,8 @@
 //  JsonPlaceholderAppSwiftTests.swift
 //  JsonPlaceholderAppSwiftTests
 //
-//  Created by Ana TP on 28/05/2020.
-//  Copyright © 2020 Ana TP. All rights reserved.
+//  Created by Ana Tirado Pro on 28/05/2020.
+//  Copyright © 2020 Ana Tirado Pro. All rights reserved.
 //
 
 import XCTest
