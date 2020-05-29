@@ -26,8 +26,10 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
     // MARK: Routing
     func routeToSelectedUser() {
         
-        let destinationVC = SelectedUserViewController()
-        guard var destinationDS = destinationVC.router?.dataStore,
+        
+        let storyboard = UIStoryboard(name: "SelectedUser", bundle: nil)
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "SelectedUserViewController") as? SelectedUserViewController,
+              var destinationDS = destinationVC.router?.dataStore,
               let dataStore = dataStore,
               let navigationController = viewController?.navigationController else { return }
 
