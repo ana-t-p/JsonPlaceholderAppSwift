@@ -40,7 +40,7 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
     // MARK: Navigation
     func navigateToSelectedUser(source: UINavigationController, destination: SelectedUserViewController) {
         
-        source.show(destination, sender: nil)
+        source.pushViewController(destination, animated: true)
     }
     
     // MARK: Passing data
