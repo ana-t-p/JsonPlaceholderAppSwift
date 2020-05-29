@@ -21,21 +21,78 @@ class JSONPlaceholderAPI {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
-            if let data = data {
+            ui {
                 
-                guard let decodedResponse = decodeJSONDictionaryUsersResponseValues(data) else {
+                if let data = data {
                     
-                    return completionHandler(nil, ErrorCases.decoding)
+                    guard let decodedResponse = decodeJSONDictionaryUsersResponseValues(data) else {
+                        
+                        return completionHandler(nil, ErrorCases.decoding)
+                    }
+                    completionHandler(decodedResponse, nil)
+                } else if let error = error {
+                    
+                    completionHandler(nil, error)
                 }
-                completionHandler(decodedResponse, nil)
-            } else if let error = error {
-                
-                completionHandler(nil, error)
             }
         }.resume()
     }
     
     // MARK: User information
+    class func getUserFirstAlbum(_ id: Int, completionHandler: @escaping (AlbumResponseData?, Error?) -> Void) {
+        
+        guard let url = URL(string: Constants.Urls.jsonPHUrl + Constants.Urls.albums + "\(id)") else {
+            
+            completionHandler(nil, ErrorCases.usedURL)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            ui {
+                
+                if let data = data {
+                    
+                    guard let decodedResponse = decodeJSONDictionaryAlbumsResponseValues(data) else {
+                        
+                        return completionHandler(nil, ErrorCases.decoding)
+                    }
+                    completionHandler(decodedResponse.first, nil)
+                } else if let error = error {
+                    
+                    completionHandler(nil, error)
+                }
+            }
+        }.resume()
+    }
+    
+    class func getUserPhoto(_ id: Int, completionHandler: @escaping (PhotoResponseData?, Error?) -> Void) {
+        
+        guard let url = URL(string: Constants.Urls.jsonPHUrl + Constants.Urls.photos + "\(id)") else {
+            
+            completionHandler(nil, ErrorCases.usedURL)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            ui {
+                
+                if let data = data {
+                    
+                    guard let decodedResponse = decodeJSONDictionaryPhotosResponseValues(data) else {
+                        
+                        return completionHandler(nil, ErrorCases.decoding)
+                    }
+                    completionHandler(decodedResponse.first, nil)
+                } else if let error = error {
+                    
+                    completionHandler(nil, error)
+                }
+            }
+        }.resume()
+    }
+    
     class func getUserPosts(_ id: Int, completionHandler: @escaping ([PostResponseData]?, Error?) -> Void) {
         
         guard let url = URL(string: Constants.Urls.jsonPHUrl + Constants.Urls.posts + "\(id)") else {
@@ -46,26 +103,24 @@ class JSONPlaceholderAPI {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
-            if let data = data {
+            ui {
                 
-                guard let decodedResponse = decodeJSONDictionaryPostsResponseValues(data) else {
+                if let data = data {
                     
-                    return completionHandler(nil, ErrorCases.decoding)
+                    guard let decodedResponse = decodeJSONDictionaryPostsResponseValues(data) else {
+                        
+                        return completionHandler(nil, ErrorCases.decoding)
+                    }
+                    completionHandler(decodedResponse, nil)
+                } else if let error = error {
+                    
+                    completionHandler(nil, error)
                 }
-                completionHandler(decodedResponse, nil)
-            } else if let error = error {
-                
-                completionHandler(nil, error)
             }
         }.resume()
     }
     
     class func getUserTODOList() {
-        
-        
-    }
-    
-    class func getUserImage() {
         
         
     }
@@ -82,6 +137,32 @@ class JSONPlaceholderAPI {
             print("Error: \(error.localizedDescription)\n")
         }
         return usersResponseData
+    }
+    
+    private class func decodeJSONDictionaryAlbumsResponseValues(_ data: Data) -> [AlbumResponseData]? {
+        
+        var albumsResponseData: [AlbumResponseData]?
+        do {
+
+            albumsResponseData = try JSONDecoder().decode([AlbumResponseData].self, from: data)
+        } catch {
+            
+            print("Error: \(error.localizedDescription)\n")
+        }
+        return albumsResponseData
+    }
+    
+    private class func decodeJSONDictionaryPhotosResponseValues(_ data: Data) -> [PhotoResponseData]? {
+        
+        var photoResponseData: [PhotoResponseData]?
+        do {
+
+            photoResponseData = try JSONDecoder().decode([PhotoResponseData].self, from: data)
+        } catch {
+            
+            print("Error: \(error.localizedDescription)\n")
+        }
+        return photoResponseData
     }
     
     private class func decodeJSONDictionaryPostsResponseValues(_ data: Data) -> [PostResponseData]? {

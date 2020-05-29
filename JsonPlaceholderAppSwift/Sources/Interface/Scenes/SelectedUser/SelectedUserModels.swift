@@ -13,6 +13,11 @@ struct PostsConfiguration {
     var bodies: [String]?
 }
 
+struct PhotoConfiguration {
+    
+    var photo: UIImage?
+}
+
 struct SelectedUser {
     
     struct UserInformation {
@@ -57,6 +62,32 @@ struct SelectedUser {
     }
     
     struct UserPostsError {
+        
+        struct Request {}
+        struct Response {
+            
+            var error: String
+        }
+        struct ViewModel {
+            
+            var error: String
+        }
+    }
+    
+    struct UserPhoto {
+        
+        struct Request {}
+        struct Response {
+            
+            var photo: UIImage?
+        }
+        struct ViewModel {
+            
+            var photo: UIImage?
+        }
+    }
+    
+    struct UserPhotoError {
         
         struct Request {}
         struct Response {

@@ -16,7 +16,13 @@ class PostsCollectionViewCell: UICollectionViewCell {
         
         super.awakeFromNib()
     }
-
+    
+    override func prepareForReuse() {
+        
+        super.prepareForReuse()
+        postLabel.text = ""
+    }
+    
     func setPost(_ text: String) {
         
         postLabel.text = text

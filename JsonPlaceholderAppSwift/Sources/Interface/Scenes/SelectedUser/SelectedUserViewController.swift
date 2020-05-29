@@ -14,6 +14,8 @@ protocol SelectedUserDisplayLogic: class {
     func displayUserInformationError(viewModel: SelectedUser.UserInformationError.ViewModel)
     func displayUserPosts(viewModel: SelectedUser.UserPosts.ViewModel)
     func displayUserPostsError(viewModel: SelectedUser.UserPostsError.ViewModel)
+    func displayUserPhoto(viewModel: SelectedUser.UserPhoto.ViewModel)
+    func displayUserPhotoError(viewModel: SelectedUser.UserPhotoError.ViewModel)
 }
 
 class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
@@ -74,6 +76,7 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
         
         showLoading()
         trySetUserInformation()
+        tryGetUserPhoto()
         tryGetUserPosts()
     }
     
@@ -123,6 +126,12 @@ extension SelectedUserViewController {
         interactor?.doSetUserInformation(request: request)
     }
     
+    private func tryGetUserPhoto() {
+        
+        let request = SelectedUser.UserPhoto.Request()
+        interactor?.doGetUserPhoto(request: request)
+    }
+    
     private func tryGetUserPosts() {
         
         let request = SelectedUser.UserPosts.Request()
@@ -144,6 +153,17 @@ extension SelectedUserViewController {
         
         ErrorPopup.showErrorPopup(viewModel.error, vc: self)
     }
+    
+    func displayUserPhoto(viewModel: SelectedUser.UserPhoto.ViewModel) {
+        
+        imageView.image = viewModel.photo
+    }
+    
+    func displayUserPhotoError(viewModel: SelectedUser.UserPhotoError.ViewModel) {
+        
+        ErrorPopup.showErrorPopup(viewModel.error, vc: self)
+    }
+    
     
     func displayUserPosts(viewModel: SelectedUser.UserPosts.ViewModel) {
         

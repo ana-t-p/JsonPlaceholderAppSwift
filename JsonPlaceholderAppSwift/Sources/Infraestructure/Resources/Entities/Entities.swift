@@ -40,3 +40,15 @@ struct PostResponseData: Decodable {
     let userId, id: Int
     let title, body: String
 }
+
+struct AlbumResponseData: Decodable {
+    
+    let userId, id: Int
+    let title: String
+}
+
+struct PhotoResponseData: Decodable {
+    
+    let albumId, id: Int
+    let title, url, thumbnailUrl: String
+}
