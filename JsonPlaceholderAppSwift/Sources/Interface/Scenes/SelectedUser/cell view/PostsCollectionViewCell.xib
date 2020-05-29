@@ -16,19 +16,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs6-AP-otf">
+                    <view alpha="0.69999999999999996" contentMode="scaleToFill" id="bSH-RY-dWb">
                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="cs6-AP-otf">
+                                <rect key="frame" x="10" y="10" width="108" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="108" id="YMU-OR-phG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="cs6-AP-otf" secondAttribute="bottom" constant="10" id="1zn-4g-GPB"/>
+                            <constraint firstItem="cs6-AP-otf" firstAttribute="top" secondItem="bSH-RY-dWb" secondAttribute="top" constant="10" id="9eX-Ld-Que"/>
+                            <constraint firstItem="cs6-AP-otf" firstAttribute="leading" secondItem="bSH-RY-dWb" secondAttribute="leading" constant="10" id="uaD-Ib-rSa"/>
+                            <constraint firstAttribute="trailing" secondItem="cs6-AP-otf" secondAttribute="trailing" constant="10" id="vT7-00-aVq"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="cs6-AP-otf" firstAttribute="leading" secondItem="75H-VX-dxT" secondAttribute="leading" id="MOT-Ln-FnN"/>
-                    <constraint firstAttribute="bottom" secondItem="cs6-AP-otf" secondAttribute="bottom" id="Oho-XA-1md"/>
-                    <constraint firstItem="cs6-AP-otf" firstAttribute="top" secondItem="75H-VX-dxT" secondAttribute="top" id="U8M-CG-RUy"/>
-                    <constraint firstAttribute="trailing" secondItem="cs6-AP-otf" secondAttribute="trailing" id="nUz-Zi-Gdb"/>
+                    <constraint firstItem="bSH-RY-dWb" firstAttribute="leading" secondItem="75H-VX-dxT" secondAttribute="leading" id="0ru-VA-g7g"/>
+                    <constraint firstAttribute="bottom" secondItem="bSH-RY-dWb" secondAttribute="bottom" id="7b9-c7-0Rs"/>
+                    <constraint firstItem="bSH-RY-dWb" firstAttribute="top" secondItem="75H-VX-dxT" secondAttribute="top" id="bWp-2n-t1k"/>
+                    <constraint firstAttribute="trailing" secondItem="bSH-RY-dWb" secondAttribute="trailing" id="qww-fM-W8W"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="138" height="91"/>
