@@ -53,6 +53,11 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
         doSomething()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+    }
+    
     func doSomething() {
         
         let request = SelectedUser.Something.Request()

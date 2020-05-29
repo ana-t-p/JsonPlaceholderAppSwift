@@ -33,6 +33,7 @@
 		D83A707B24808819001ED298 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D83A707A24808819001ED298 /* Localizable.strings */; };
 		D83A707D248099FF001ED298 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A707C248099FF001ED298 /* Utils.swift */; };
 		D864FE7A24814F090008E30E /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864FE7924814F090008E30E /* ErrorPopup.swift */; };
+		D864FE7C248151D30008E30E /* SelectedUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D864FE7B248151D30008E30E /* SelectedUser.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		D83A707A24808819001ED298 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D83A707C248099FF001ED298 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D864FE7924814F090008E30E /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
+		D864FE7B248151D30008E30E /* SelectedUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectedUser.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				D83A706824807BC5001ED298 /* SelectedUserModels.swift */,
 				D83A706924807BC5001ED298 /* SelectedUserViewController.swift */,
 				D83A706A24807BC5001ED298 /* SelectedUserInteractor.swift */,
+				D864FE7B248151D30008E30E /* SelectedUser.storyboard */,
 			);
 			path = SelectedUser;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				D83A707B24808819001ED298 /* Localizable.strings in Resources */,
 				D83A7035248020AE001ED298 /* LaunchScreen.storyboard in Resources */,
 				D83A7032248020AE001ED298 /* Assets.xcassets in Resources */,
+				D864FE7C248151D30008E30E /* SelectedUser.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

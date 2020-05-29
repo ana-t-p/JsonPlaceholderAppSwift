@@ -29,14 +29,14 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
         let destinationVC = SelectedUserViewController()
         guard var destinationDS = destinationVC.router?.dataStore,
               let dataStore = dataStore,
-              let viewController = viewController else { return }
+              let navigationController = viewController?.navigationController else { return }
 
         passDataToSelectedUser(source: dataStore, destination: &destinationDS)
-        navigateToSelectedUser(source: viewController, destination: destinationVC)
+        navigateToSelectedUser(source: navigationController, destination: destinationVC)
     }
     
     // MARK: Navigation
-    func navigateToSelectedUser(source: HomeViewController, destination: SelectedUserViewController) {
+    func navigateToSelectedUser(source: UINavigationController, destination: SelectedUserViewController) {
         
         source.show(destination, sender: nil)
     }

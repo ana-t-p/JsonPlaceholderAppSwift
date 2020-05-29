@@ -83,6 +83,13 @@ class HomeViewController: UIViewController, HomeDisplayLogic {
         activityIndicator.startAnimating()
     }
     
+    private func enableButton(_ enable: Bool) {
+        
+        nextButton.isUserInteractionEnabled = enable
+        nextButton.isEnabled = enable
+        nextButton.alpha = enable == true ? 0.9 : 0.1
+    }
+    
     @IBAction func pushedButton(_ sender: Any) {
         
         tryGoToSelectedUser()
@@ -109,6 +116,7 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
+        enableButton(row == 0 ? false : true)
         selectedUserId = row
     }
 }
@@ -140,6 +148,7 @@ extension HomeViewController {
             self?.pickerView.isHidden = false
             self?.pickerView.reloadAllComponents()
             self?.nextButton.isHidden = false
+            self?.enableButton(false)
         }
     }
     
@@ -148,7 +157,6 @@ extension HomeViewController {
         ui { [weak self] in
             self?.activityIndicator.stopAnimating()
         }
-        
         ErrorPopup.showErrorPopup(viewModel.error, vc: self)
     }
     
