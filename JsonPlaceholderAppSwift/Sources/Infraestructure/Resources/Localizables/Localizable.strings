@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  JsonPlaceholderAppSwift
+
+  Created by Ana Tirado Pro on 29/05/2020.
+  Copyright © 2020 Ana Tirado Pro. All rights reserved.
+*/
+
+//-------------------------------------------------//
+//                      HOME                       //
+//-------------------------------------------------//
+
+
+//-------------------------------------------------//
+//                  SELECTED USER                  //
+//-------------------------------------------------//
+
+
+//-------------------------------------------------//
+//                   TODO LIST                     //
+//-------------------------------------------------//
+
+
+//-------------------------------------------------//
+//                      ERRORS                     //
+//-------------------------------------------------//
+"error.title" = "ERROR!";
+"error.button" = "Ok :(";
+"error.usedURL" = "Some error ocurred when try to access to the url.";
+"error.apiCalling" = "Some error ocurred when calling to API.";
+"error.decoding" = "Some error ocurred when decoding.\n";

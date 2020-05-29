@@ -54,7 +54,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vm8-lB-5vy" userLabel="Picker View">
                                         <rect key="frame" x="0.0" y="116" width="414" height="90"/>
                                         <subviews>
-                                            <pickerView alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NvR-FX-L3r">
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="KUw-gG-n6k">
+                                                <rect key="frame" x="182" y="20" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="b0u-Sv-8BE"/>
+                                                    <constraint firstAttribute="width" constant="50" id="feu-xH-bpo"/>
+                                                </constraints>
+                                                <color key="color" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </activityIndicatorView>
+                                            <pickerView hidden="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NvR-FX-L3r">
                                                 <rect key="frame" x="16" y="20" width="382" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -65,7 +73,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="NvR-FX-L3r" firstAttribute="leading" secondItem="Vm8-lB-5vy" secondAttribute="leading" constant="16" id="90f-CQ-5CW"/>
+                                            <constraint firstItem="KUw-gG-n6k" firstAttribute="centerX" secondItem="NvR-FX-L3r" secondAttribute="centerX" id="Cb0-aT-7u9"/>
                                             <constraint firstItem="NvR-FX-L3r" firstAttribute="top" secondItem="Vm8-lB-5vy" secondAttribute="top" constant="20" id="bhc-ZL-Rxv"/>
+                                            <constraint firstItem="KUw-gG-n6k" firstAttribute="centerY" secondItem="NvR-FX-L3r" secondAttribute="centerY" id="dSy-3L-VVD"/>
                                             <constraint firstAttribute="trailing" secondItem="NvR-FX-L3r" secondAttribute="trailing" constant="16" id="ffy-ID-1Yz"/>
                                             <constraint firstAttribute="bottom" secondItem="NvR-FX-L3r" secondAttribute="bottom" constant="20" id="pWD-rS-6EH"/>
                                         </constraints>
@@ -82,6 +92,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aH5-KF-lGH"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="KUw-gG-n6k" id="b1a-l2-Pde"/>
+                        <outlet property="pickerView" destination="NvR-FX-L3r" id="zwM-3O-sH7"/>
+                        <outlet property="subtitleLabel" destination="FJF-TK-5kO" id="zw3-6V-JjJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAA-dq-YVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

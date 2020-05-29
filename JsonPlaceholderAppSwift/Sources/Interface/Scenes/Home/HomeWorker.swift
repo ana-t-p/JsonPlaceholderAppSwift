@@ -8,9 +8,32 @@
 
 import UIKit
 
-class HomeWorker
-{
-  func doSomeWork()
-  {
-  }
+enum JSONPlaceholderAPIUserResult {
+    
+    case success(data: UserConfiguration)
+    case failure(error: Error)
+}
+
+typealias HomeWorkerCompletionHandler = (_ data: JSONPlaceholderAPIUserResult) -> Void
+
+class HomeWorker {
+    
+    func getUserList(result: @escaping HomeWorkerCompletionHandler) {
+        
+        JSONPlaceholderAPI.getUsers { (userResponseData, error) in
+            
+            if let error = error {
+                
+                result(JSONPlaceholderAPIUserResult.failure(error: error))
+            } else if let userResponseData = userResponseData {
+                
+                var users = [ChoosenUser]()
+                for singleUser in userResponseData {
+                    
+                    users.append(ChoosenUser(id: singleUser.id, name: singleUser.username, surname: singleUser.name, phone: singleUser.phone))
+                }
+                result(JSONPlaceholderAPIUserResult.success(data: UserConfiguration(users: users)))
+            }
+        }
+    }
 }

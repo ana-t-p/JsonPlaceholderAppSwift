@@ -8,30 +8,52 @@
 
 import UIKit
 
-protocol HomeBusinessLogic
-{
-  func doSomething(request: Home.Something.Request)
-}
-
-protocol HomeDataStore
-{
-  //var name: String { get set }
-}
-
-class HomeInteractor: HomeBusinessLogic, HomeDataStore
-{
-  var presenter: HomePresentationLogic?
-  var worker: HomeWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Home.Something.Request)
-  {
-    worker = HomeWorker()
-    worker?.doSomeWork()
+protocol HomeBusinessLogic {
     
-    let response = Home.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    func doGetUserList()
+}
+
+protocol HomeDataStore {
+    
+    var user: ChoosenUser? { get set }
+}
+
+class HomeInteractor: HomeBusinessLogic, HomeDataStore {
+    
+    var presenter: HomePresentationLogic?
+    var worker: HomeWorker?
+    var user: ChoosenUser?
+    var users: [ChoosenUser]?
+
+    // MARK: Methods
+    func doGetUserList() {
+        
+        worker = HomeWorker()
+        worker?.getUserList(result: { [weak self] (responseFromWorker) in
+            
+            switch responseFromWorker {
+                
+            case .success(data: let data):
+                
+                if let users = data.users {
+                    
+                    self?.users = users
+                    var names = [String]()
+                    for user in users {
+                        
+                        names.append(user.surname)
+                    }
+                    let response = Home.UserResults.Response(names: names)
+                    self?.presenter?.presentGetUserList(response: response)
+                } else {
+                    
+                    let response = Home.UserResultsError.Response(error: ErrorCases.apiCalling.localizedDescription)
+                    self?.presenter?.presentGetUserListError(response: response)
+                }
+            case .failure(error: let error):
+                let response = Home.UserResultsError.Response(error: error.localizedDescription)
+                self?.presenter?.presentGetUserListError(response: response)
+            }
+        })
+    }
 }

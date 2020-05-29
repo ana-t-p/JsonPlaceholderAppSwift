@@ -8,20 +8,26 @@
 
 import UIKit
 
-protocol HomePresentationLogic
-{
-  func presentSomething(response: Home.Something.Response)
+protocol HomePresentationLogic {
+    
+    func presentGetUserList(response: Home.UserResults.Response)
+    func presentGetUserListError(response: Home.UserResultsError.Response)
 }
 
-class HomePresenter: HomePresentationLogic
-{
-  weak var viewController: HomeDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Home.Something.Response)
-  {
-    let viewModel = Home.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+class HomePresenter: HomePresentationLogic {
+    
+    weak var viewController: HomeDisplayLogic?
+    
+    // MARK: Methods
+    func presentGetUserList(response: Home.UserResults.Response) {
+        
+        let viewModel = Home.UserResults.ViewModel(names: response.names)
+        viewController?.displayGetUserList(viewModel: viewModel)
+    }
+    
+    func presentGetUserListError(response: Home.UserResultsError.Response) {
+        
+        let viewModel = Home.UserResultsError.ViewModel(error: response.error)
+        viewController?.displayGetUserListError(viewModel: viewModel)
+    }
 }
