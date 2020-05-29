@@ -15,7 +15,7 @@ struct UserConfiguration {
 
 struct Home {
     
-    struct UserResults {
+    struct UsersResults {
         
         struct Request {}
         struct Response {
@@ -28,7 +28,30 @@ struct Home {
         }
     }
     
-    struct UserResultsError {
+    struct UsersResultsError {
+        
+        struct Request {}
+        struct Response {
+            
+            var error: String
+        }
+        struct ViewModel {
+            
+            var error: String
+        }
+    }
+    
+    struct SelectedUserResults {
+        
+        struct Request {
+            
+            var id: Int
+        }
+        struct Response {}
+        struct ViewModel {}
+    }
+    
+    struct SelectedUserResultsError {
         
         struct Request {}
         struct Response {

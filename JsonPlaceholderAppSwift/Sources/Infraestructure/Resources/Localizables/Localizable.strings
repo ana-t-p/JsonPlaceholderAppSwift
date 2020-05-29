@@ -28,4 +28,5 @@
 "error.button" = "Ok :(";
 "error.usedURL" = "Some error ocurred when try to access to the url.";
 "error.apiCalling" = "Some error ocurred when calling to API.";
-"error.decoding" = "Some error ocurred when decoding.\n";
+"error.decoding" = "Some error ocurred when decoding.";
+"error.userNotFound" = "Sorry, user did not found.";

@@ -15,15 +15,15 @@ protocol SelectedUserBusinessLogic {
 
 protocol SelectedUserDataStore {
     
-    //var name: String { get set }
+    var selectedUser: ChoosenUser? { get set }
 }
 
 class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
     
     var presenter: SelectedUserPresentationLogic?
     var worker: SelectedUserWorker?
-    //var name: String = ""
-    
+    var selectedUser: ChoosenUser?
+
     // MARK: Methods
     func doSomething(request: SelectedUser.Something.Request) {
         

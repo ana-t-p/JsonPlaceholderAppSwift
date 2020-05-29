@@ -14,6 +14,7 @@ enum ErrorCases: Error {
     case usedURL
     case apiCalling
     case decoding
+    case userNotFound
 }
 
 extension ErrorCases: LocalizedError {
@@ -28,6 +29,8 @@ extension ErrorCases: LocalizedError {
             return "error.apiCalling".localized
         case .decoding:
             return "error.decoding".localized
+        case .userNotFound:
+            return "error.userNotFound".localized
         }
     }
 }

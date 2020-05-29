@@ -32,6 +32,7 @@
 		D83A70782480872B001ED298 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A70772480872B001ED298 /* StringExtension.swift */; };
 		D83A707B24808819001ED298 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D83A707A24808819001ED298 /* Localizable.strings */; };
 		D83A707D248099FF001ED298 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A707C248099FF001ED298 /* Utils.swift */; };
+		D864FE7A24814F090008E30E /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864FE7924814F090008E30E /* ErrorPopup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		D83A70772480872B001ED298 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D83A707A24808819001ED298 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D83A707C248099FF001ED298 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D864FE7924814F090008E30E /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,8 +176,8 @@
 		D83A704E2480227B001ED298 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D83A706424807BAC001ED298 /* SelectedUser */,
 				D83A705524804D81001ED298 /* Home */,
+				D83A706424807BAC001ED298 /* SelectedUser */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -193,6 +195,7 @@
 			children = (
 				D83A705324802883001ED298 /* Constants.swift */,
 				D83A707C248099FF001ED298 /* Utils.swift */,
+				D864FE7924814F090008E30E /* ErrorPopup.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D864FE7A24814F090008E30E /* ErrorPopup.swift in Sources */,
 				D83A705F24804DAE001ED298 /* HomeModels.swift in Sources */,
 				D83A706C24807BC5001ED298 /* SelectedUserWorker.swift in Sources */,
 				D83A705424802883001ED298 /* Constants.swift in Sources */,

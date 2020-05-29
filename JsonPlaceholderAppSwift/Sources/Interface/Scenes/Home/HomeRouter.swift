@@ -44,6 +44,6 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
     // MARK: Passing data
     func passDataToSelectedUser(source: HomeDataStore, destination: inout SelectedUserDataStore) {
         
-        //    destination.name = source.name
+        destination.selectedUser = source.selectedUser
     }
 }

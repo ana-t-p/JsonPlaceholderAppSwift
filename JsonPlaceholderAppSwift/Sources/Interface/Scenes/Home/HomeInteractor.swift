@@ -11,18 +11,19 @@ import UIKit
 protocol HomeBusinessLogic {
     
     func doGetUserList()
+    func doGoToSelectedUser(request: Home.SelectedUserResults.Request)
 }
 
 protocol HomeDataStore {
     
-    var user: ChoosenUser? { get set }
+    var selectedUser: ChoosenUser? { get set }
 }
 
 class HomeInteractor: HomeBusinessLogic, HomeDataStore {
     
     var presenter: HomePresentationLogic?
     var worker: HomeWorker?
-    var user: ChoosenUser?
+    var selectedUser: ChoosenUser?
     var users: [ChoosenUser]?
 
     // MARK: Methods
@@ -43,17 +44,32 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore {
                         
                         names.append(user.surname)
                     }
-                    let response = Home.UserResults.Response(names: names)
+                    let response = Home.UsersResults.Response(names: names)
                     self?.presenter?.presentGetUserList(response: response)
                 } else {
                     
-                    let response = Home.UserResultsError.Response(error: ErrorCases.apiCalling.localizedDescription)
+                    let response = Home.UsersResultsError.Response(error: ErrorCases.apiCalling.localizedDescription)
                     self?.presenter?.presentGetUserListError(response: response)
                 }
             case .failure(error: let error):
-                let response = Home.UserResultsError.Response(error: error.localizedDescription)
+                let response = Home.UsersResultsError.Response(error: error.localizedDescription)
                 self?.presenter?.presentGetUserListError(response: response)
             }
         })
+    }
+    
+    func doGoToSelectedUser(request: Home.SelectedUserResults.Request) {
+        
+        if let users = users {
+            
+            selectedUser = users[request.id - 1]
+            let response = Home.SelectedUserResults.Response()
+            presenter?.presentSelectedUserDetail(response: response)
+        } else {
+            
+            let response = Home.SelectedUserResultsError.Response(error: ErrorCases.userNotFound.localizedDescription)
+            presenter?.presentSelectedUserDetailError(response: response)
+        }
+        
     }
 }
