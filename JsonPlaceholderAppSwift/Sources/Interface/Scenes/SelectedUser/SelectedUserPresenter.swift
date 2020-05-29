@@ -12,10 +12,12 @@ protocol SelectedUserPresentationLogic {
     
     func presentUserInformation(response: SelectedUser.UserInformation.Response)
     func presentUserInformationError(response: SelectedUser.UserInformationError.Response)
+    func presentUserPosts(response: SelectedUser.UserPosts.Response)
+    func presentUserPostsError(response: SelectedUser.UserPostsError.Response)
 }
 
 class SelectedUserPresenter: SelectedUserPresentationLogic {
-    
+
     weak var viewController: SelectedUserDisplayLogic?
     
     // MARK: Methods
@@ -32,5 +34,17 @@ class SelectedUserPresenter: SelectedUserPresentationLogic {
         
         let viewModel = SelectedUser.UserInformationError.ViewModel(error: response.error)
         viewController?.displayUserInformationError(viewModel: viewModel)
+    }
+    
+    func presentUserPosts(response: SelectedUser.UserPosts.Response) {
+        
+        let viewModel = SelectedUser.UserPosts.ViewModel(posts: response.posts)
+        viewController?.displayUserPosts(viewModel: viewModel)
+    }
+    
+    func presentUserPostsError(response: SelectedUser.UserPostsError.Response) {
+        
+        let viewModel = SelectedUser.UserPostsError.ViewModel(error: response.error)
+        viewController?.displayUserPostsError(viewModel: viewModel)
     }
 }

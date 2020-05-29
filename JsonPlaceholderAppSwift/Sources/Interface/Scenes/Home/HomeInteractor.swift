@@ -70,6 +70,5 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore {
             let response = Home.SelectedUserResultsError.Response(error: ErrorCases.userNotFound.localizedDescription)
             presenter?.presentSelectedUserDetailError(response: response)
         }
-        
     }
 }

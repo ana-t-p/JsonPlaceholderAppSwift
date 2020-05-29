@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct PostsConfiguration {
+    
+    var bodies: [String]?
+}
+
 struct SelectedUser {
     
     struct UserInformation {
@@ -26,6 +31,32 @@ struct SelectedUser {
     }
     
     struct UserInformationError {
+        
+        struct Request {}
+        struct Response {
+            
+            var error: String
+        }
+        struct ViewModel {
+            
+            var error: String
+        }
+    }
+    
+    struct UserPosts {
+        
+        struct Request {}
+        struct Response {
+            
+            var posts: [String]
+        }
+        struct ViewModel {
+            
+            var posts: [String]
+        }
+    }
+    
+    struct UserPostsError {
         
         struct Request {}
         struct Response {

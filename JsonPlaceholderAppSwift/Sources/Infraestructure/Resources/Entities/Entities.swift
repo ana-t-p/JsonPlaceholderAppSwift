@@ -34,3 +34,9 @@ struct Geo: Decodable {
     
     let lat, lng: String
 }
+
+struct PostResponseData: Decodable {
+    
+    let userId, id: Int
+    let title, body: String
+}

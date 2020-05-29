@@ -23,7 +23,7 @@ class JSONPlaceholderAPI {
             
             if let data = data {
                 
-                guard let decodedResponse = decodeJSONDictionaryResponseValues(data) else {
+                guard let decodedResponse = decodeJSONDictionaryUsersResponseValues(data) else {
                     
                     return completionHandler(nil, ErrorCases.decoding)
                 }
@@ -36,9 +36,28 @@ class JSONPlaceholderAPI {
     }
     
     // MARK: User information
-    class func getUserPosts() {
+    class func getUserPosts(_ id: Int, completionHandler: @escaping ([PostResponseData]?, Error?) -> Void) {
         
+        guard let url = URL(string: Constants.Urls.jsonPHUrl + Constants.Urls.posts + "\(id)") else {
+            
+            completionHandler(nil, ErrorCases.usedURL)
+            return
+        }
         
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            if let data = data {
+                
+                guard let decodedResponse = decodeJSONDictionaryPostsResponseValues(data) else {
+                    
+                    return completionHandler(nil, ErrorCases.decoding)
+                }
+                completionHandler(decodedResponse, nil)
+            } else if let error = error {
+                
+                completionHandler(nil, error)
+            }
+        }.resume()
     }
     
     class func getUserTODOList() {
@@ -52,16 +71,29 @@ class JSONPlaceholderAPI {
     }
     
     // MARK: Private
-    private class func decodeJSONDictionaryResponseValues(_ data: Data) -> [UserResponseData]? {
+    private class func decodeJSONDictionaryUsersResponseValues(_ data: Data) -> [UserResponseData]? {
         
-        var userResponseData: [UserResponseData]?
+        var usersResponseData: [UserResponseData]?
         do {
 
-            userResponseData = try JSONDecoder().decode([UserResponseData].self, from: data)
+            usersResponseData = try JSONDecoder().decode([UserResponseData].self, from: data)
         } catch {
             
             print("Error: \(error.localizedDescription)\n")
         }
-        return userResponseData
+        return usersResponseData
+    }
+    
+    private class func decodeJSONDictionaryPostsResponseValues(_ data: Data) -> [PostResponseData]? {
+        
+        var postsResponseData: [PostResponseData]?
+        do {
+
+            postsResponseData = try JSONDecoder().decode([PostResponseData].self, from: data)
+        } catch {
+            
+            print("Error: \(error.localizedDescription)\n")
+        }
+        return postsResponseData
     }
 }

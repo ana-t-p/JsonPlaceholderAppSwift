@@ -12,10 +12,12 @@ protocol SelectedUserDisplayLogic: class {
     
     func displayUserInformation(viewModel: SelectedUser.UserInformation.ViewModel)
     func displayUserInformationError(viewModel: SelectedUser.UserInformationError.ViewModel)
+    func displayUserPosts(viewModel: SelectedUser.UserPosts.ViewModel)
+    func displayUserPostsError(viewModel: SelectedUser.UserPostsError.ViewModel)
 }
 
 class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
-    
+
     var interactor: SelectedUserBusinessLogic?
     var router: (NSObjectProtocol & SelectedUserRoutingLogic & SelectedUserDataPassing)?
     
@@ -67,9 +69,12 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(PostsCollectionViewCell.self, forCellWithReuseIdentifier: "postsCollectionViewCell")
+        collectionView.register(UINib(nibName: "PostsCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "postsCollectionViewCell")
         
         showLoading()
         trySetUserInformation()
+        tryGetUserPosts()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -101,7 +106,7 @@ extension SelectedUserViewController: UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostsCollectionViewCell", for: indexPath) as? PostsCollectionViewCell,
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as? PostsCollectionViewCell,
               let posts = posts else { return UICollectionViewCell ()}
         
         cell.setPost(posts[indexPath.row])
@@ -117,6 +122,12 @@ extension SelectedUserViewController {
         let request = SelectedUser.UserInformation.Request()
         interactor?.doSetUserInformation(request: request)
     }
+    
+    private func tryGetUserPosts() {
+        
+        let request = SelectedUser.UserPosts.Request()
+        interactor?.doGetUserPosts(request: request)
+    }
 }
 
 // MARK: - Output
@@ -131,6 +142,24 @@ extension SelectedUserViewController {
     
     func displayUserInformationError(viewModel: SelectedUser.UserInformationError.ViewModel) {
         
+        ErrorPopup.showErrorPopup(viewModel.error, vc: self)
+    }
+    
+    func displayUserPosts(viewModel: SelectedUser.UserPosts.ViewModel) {
+        
+        posts = viewModel.posts
+        ui { [weak self] in
+            self?.activityIndicator.stopAnimating()
+            self?.collectionView.isHidden = false
+            self?.collectionView.reloadData()
+        }
+    }
+    
+    func displayUserPostsError(viewModel: SelectedUser.UserPostsError.ViewModel) {
+        
+        ui { [weak self] in
+            self?.activityIndicator.stopAnimating()
+        }
         ErrorPopup.showErrorPopup(viewModel.error, vc: self)
     }
 }
