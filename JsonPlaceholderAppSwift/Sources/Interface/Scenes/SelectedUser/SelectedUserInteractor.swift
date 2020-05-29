@@ -10,7 +10,7 @@ import UIKit
 
 protocol SelectedUserBusinessLogic {
     
-    func doSomething(request: SelectedUser.Something.Request)
+    func doSetUserInformation(request: SelectedUser.UserInformation.Request)
 }
 
 protocol SelectedUserDataStore {
@@ -25,12 +25,16 @@ class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
     var selectedUser: ChoosenUser?
 
     // MARK: Methods
-    func doSomething(request: SelectedUser.Something.Request) {
+    func doSetUserInformation(request: SelectedUser.UserInformation.Request) {
         
-        worker = SelectedUserWorker()
-        worker?.doSomeWork()
-        
-        let response = SelectedUser.Something.Response()
-        presenter?.presentSomething(response: response)
+        if let selectedUser = selectedUser {
+            
+            let response = SelectedUser.UserInformation.Response(selectedUser: selectedUser)
+            presenter?.presentUserInformation(response: response)
+        } else {
+            
+            let response = SelectedUser.UserInformationError.Response(error: ErrorCases.userNotFound.localizedDescription)
+            presenter?.presentUserInformationError(response: response)
+        }
     }
 }

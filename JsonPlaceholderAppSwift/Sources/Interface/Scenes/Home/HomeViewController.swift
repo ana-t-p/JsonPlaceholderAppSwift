@@ -62,8 +62,12 @@ class HomeViewController: UIViewController, HomeDisplayLogic {
         
         super.viewDidLoad()
         
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
         pickerView.delegate = self
         pickerView.dataSource = self
+        
         showLoading()
         tryGetUserList()
     }
@@ -90,6 +94,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic {
         nextButton.alpha = enable == true ? 0.9 : 0.1
     }
     
+    // MARK: Actions
     @IBAction func pushedButton(_ sender: Any) {
         
         tryGoToSelectedUser()

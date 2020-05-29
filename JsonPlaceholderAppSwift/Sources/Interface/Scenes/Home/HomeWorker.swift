@@ -30,7 +30,7 @@ class HomeWorker {
                 var users = [ChoosenUser]()
                 for singleUser in userResponseData {
                     
-                    users.append(ChoosenUser(id: singleUser.id, name: singleUser.username, surname: singleUser.name, phone: singleUser.phone))
+                    users.append(ChoosenUser(id: singleUser.id, name: singleUser.username, surname: singleUser.name, email: singleUser.email, phone: singleUser.phone))
                 }
                 result(JSONPlaceholderAPIUserResult.success(data: UserConfiguration(users: users)))
             }

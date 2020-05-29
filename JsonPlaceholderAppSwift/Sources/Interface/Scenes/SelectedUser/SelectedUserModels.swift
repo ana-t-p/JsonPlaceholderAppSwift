@@ -8,12 +8,33 @@
 
 import UIKit
 
-enum SelectedUser {
+struct SelectedUser {
     
-    enum Something {
+    struct UserInformation {
         
         struct Request {}
-        struct Response {}
-        struct ViewModel {}
+        struct Response {
+            
+            var selectedUser: ChoosenUser
+        }
+        struct ViewModel {
+            
+            var name: String
+            var email: String
+            var phone: String
+        }
+    }
+    
+    struct UserInformationError {
+        
+        struct Request {}
+        struct Response {
+            
+            var error: String
+        }
+        struct ViewModel {
+            
+            var error: String
+        }
     }
 }

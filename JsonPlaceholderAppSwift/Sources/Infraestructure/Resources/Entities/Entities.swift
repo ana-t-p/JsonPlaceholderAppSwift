@@ -13,6 +13,7 @@ struct ChoosenUser {
     var id: Int
     var name: String
     var surname: String
+    var email: String
     var phone: String
 }
 

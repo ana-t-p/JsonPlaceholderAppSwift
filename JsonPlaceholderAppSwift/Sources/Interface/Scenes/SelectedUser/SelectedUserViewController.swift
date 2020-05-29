@@ -10,13 +10,24 @@ import UIKit
 
 protocol SelectedUserDisplayLogic: class {
     
-    func displaySomething(viewModel: SelectedUser.Something.ViewModel)
+    func displayUserInformation(viewModel: SelectedUser.UserInformation.ViewModel)
+    func displayUserInformationError(viewModel: SelectedUser.UserInformationError.ViewModel)
 }
 
 class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
     
     var interactor: SelectedUserBusinessLogic?
     var router: (NSObjectProtocol & SelectedUserRoutingLogic & SelectedUserDataPassing)?
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var todoButton: UIButton!
+    
+    var posts: [String]?
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -50,7 +61,15 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        doSomething()
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        showLoading()
+        trySetUserInformation()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -58,13 +77,60 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
         return .lightContent
     }
     
-    func doSomething() {
+    // MARK: Methods
+    private func showLoading() {
         
-        let request = SelectedUser.Something.Request()
-        interactor?.doSomething(request: request)
+        collectionView.isHidden = true
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
     }
     
-    func displaySomething(viewModel: SelectedUser.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    // MARK: Actions
+    @IBAction func todoButtonAction(_ sender: Any) {
+        
+    }
+}
+
+// MARK: - Delegates
+extension SelectedUserViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return (posts?.count ?? 1) - 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostsCollectionViewCell", for: indexPath) as? PostsCollectionViewCell,
+              let posts = posts else { return UICollectionViewCell ()}
+        
+        cell.setPost(posts[indexPath.row])
+        return cell
+    }
+}
+
+// MARK: - Input
+extension SelectedUserViewController {
+    
+    private func trySetUserInformation() {
+        
+        let request = SelectedUser.UserInformation.Request()
+        interactor?.doSetUserInformation(request: request)
+    }
+}
+
+// MARK: - Output
+extension SelectedUserViewController {
+    
+    func displayUserInformation(viewModel: SelectedUser.UserInformation.ViewModel) {
+        
+        nameLabel.text = viewModel.name
+        emailLabel.text = viewModel.email
+        phoneLabel.text = viewModel.phone
+    }
+    
+    func displayUserInformationError(viewModel: SelectedUser.UserInformationError.ViewModel) {
+        
+        ErrorPopup.showErrorPopup(viewModel.error, vc: self)
     }
 }
