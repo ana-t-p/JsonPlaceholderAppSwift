@@ -175,6 +175,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="Qei-5J-sTa" id="CpV-vG-BC0"/>
+                        <outlet property="collectionHolder" destination="EPX-Fn-D1I" id="cgh-uX-qV1"/>
                         <outlet property="collectionView" destination="eUs-qV-8RW" id="Zgw-mF-FiW"/>
                         <outlet property="emailLabel" destination="ADj-Gr-frM" id="lje-gC-mZI"/>
                         <outlet property="imageView" destination="p1H-C8-SUe" id="mhE-Q0-2AU"/>

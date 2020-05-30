@@ -27,6 +27,7 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var collectionHolder: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var todoButton: UIButton!
@@ -66,15 +67,7 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
         
         super.viewDidLoad()
         
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(PostsCollectionViewCell.self, forCellWithReuseIdentifier: "postsCollectionViewCell")
-        collectionView.register(UINib(nibName: "PostsCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "postsCollectionViewCell")
-        
-        showLoading()
+        setupView()
         trySetUserInformation()
         tryGetUserPhoto()
         tryGetUserPosts()
@@ -86,6 +79,19 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
     }
     
     // MARK: Methods
+    private func setupView() {
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(PostsCollectionViewCell.self, forCellWithReuseIdentifier: "postsCollectionViewCell")
+        collectionView.register(UINib(nibName: "PostsCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "postsCollectionViewCell")
+        
+        showLoading()
+    }
+    
     private func showLoading() {
         
         collectionView.isHidden = true
@@ -179,6 +185,7 @@ extension SelectedUserViewController {
         
         ui { [weak self] in
             self?.activityIndicator.stopAnimating()
+            self?.collectionHolder.isHidden = true
         }
         ErrorPopup.showErrorPopup(viewModel.error, vc: self)
     }
