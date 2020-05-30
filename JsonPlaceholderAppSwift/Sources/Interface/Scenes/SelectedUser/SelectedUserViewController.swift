@@ -25,9 +25,11 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var collectionHolder: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var collectionHolder: UIView!
+    @IBOutlet weak var postsLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var buttonHolder: UIView!
     @IBOutlet weak var todoButton: UIButton!
     
     var posts: [String]?
@@ -70,11 +72,6 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
         tryGetUserDetails()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        
-        return .lightContent
-    }
-    
     // MARK: Methods
     private func setupView() {
         
@@ -91,9 +88,22 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
     
     private func showLoading() {
         
-        collectionView.isHidden = true
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
+        
+        thereArePosts(false)
+        thereIsTodoList(false)
+    }
+    
+    private func thereArePosts(_ existence: Bool) {
+        
+        postsLabel.isHidden = !existence
+        collectionView.isHidden = !existence
+    }
+    
+    private func thereIsTodoList(_ existence: Bool) {
+        
+        buttonHolder.isHidden = !existence
     }
     
     // MARK: Actions
@@ -164,7 +174,7 @@ extension SelectedUserViewController {
             posts = userPosts
             ui { [weak self] in
                 self?.activityIndicator.stopAnimating()
-                self?.collectionView.isHidden = false
+                self?.thereArePosts(true)
                 self?.collectionView.reloadData()
             }
         } else {
@@ -174,6 +184,8 @@ extension SelectedUserViewController {
                 self?.collectionHolder.isHidden = true
             }
         }
+        
+        thereIsTodoList(viewModel.thereAreTodos)
     }
     
     func displayUserDetailsError(viewModel: SelectedUser.UserDetailsError.ViewModel) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w0U-po-TZR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,13 +15,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-NW-4yP">
+                            <visualEffectView opaque="NO" alpha="0.80000000000000004" tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-NW-4yP">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3LX-XE-lx1">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <blurEffect style="dark"/>
+                                <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zs0-07-ogG">
                                 <rect key="frame" x="30" y="94" width="354" height="718"/>
@@ -38,28 +38,40 @@
                                             <action selector="close:" destination="w0U-po-TZR" eventType="touchUpInside" id="83z-dL-gpz"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'s TODO list:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-6J-4kn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-6J-4kn">
                                         <rect key="frame" x="17" y="65" width="320" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wAZ-wZ-9rZ" userLabel="Separator">
+                                        <rect key="frame" x="10" y="95.5" width="334" height="2"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="dlx-ho-tyQ"/>
+                                        </constraints>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="krW-Hf-BMi">
-                                        <rect key="frame" x="10" y="110.5" width="334" height="597.5"/>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="10" y="98.5" width="334" height="609.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="atv-6J-4kn" secondAttribute="trailing" constant="17" id="5pj-KN-hw5"/>
-                                    <constraint firstItem="krW-Hf-BMi" firstAttribute="top" secondItem="atv-6J-4kn" secondAttribute="bottom" constant="25" id="71p-5u-jrA"/>
+                                    <constraint firstItem="wAZ-wZ-9rZ" firstAttribute="top" secondItem="atv-6J-4kn" secondAttribute="bottom" constant="10" id="71p-5u-jrA"/>
                                     <constraint firstItem="6b4-A9-IRe" firstAttribute="top" secondItem="Zs0-07-ogG" secondAttribute="top" constant="15" id="CIT-XY-PwY"/>
+                                    <constraint firstItem="krW-Hf-BMi" firstAttribute="top" secondItem="wAZ-wZ-9rZ" secondAttribute="bottom" constant="1" id="K6h-Se-CtK"/>
                                     <constraint firstItem="atv-6J-4kn" firstAttribute="leading" secondItem="Zs0-07-ogG" secondAttribute="leading" constant="17" id="LQm-NF-DdJ"/>
                                     <constraint firstAttribute="trailing" secondItem="6b4-A9-IRe" secondAttribute="trailing" constant="15" id="QQJ-Dg-hOj"/>
                                     <constraint firstItem="atv-6J-4kn" firstAttribute="top" secondItem="6b4-A9-IRe" secondAttribute="bottom" constant="20" id="S5K-n0-7Nw"/>
                                     <constraint firstAttribute="trailing" secondItem="krW-Hf-BMi" secondAttribute="trailing" constant="10" id="TKW-kx-fHg"/>
                                     <constraint firstAttribute="bottom" secondItem="krW-Hf-BMi" secondAttribute="bottom" constant="10" id="Vxd-aT-6CC"/>
                                     <constraint firstItem="krW-Hf-BMi" firstAttribute="leading" secondItem="Zs0-07-ogG" secondAttribute="leading" constant="10" id="ZoJ-6l-Sea"/>
+                                    <constraint firstItem="wAZ-wZ-9rZ" firstAttribute="trailing" secondItem="krW-Hf-BMi" secondAttribute="trailing" id="aKH-t5-LLZ"/>
+                                    <constraint firstItem="wAZ-wZ-9rZ" firstAttribute="leading" secondItem="krW-Hf-BMi" secondAttribute="leading" id="vQA-WK-6Rl"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

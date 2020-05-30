@@ -64,17 +64,13 @@ class HomeViewController: UIViewController, HomeDisplayLogic {
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Select neighbour", style: .plain, target: nil, action: nil)
         
         pickerView.delegate = self
         pickerView.dataSource = self
         
         showLoading()
         tryGetUserList()
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        
-        return .lightContent
     }
     
     // MARK: Methods

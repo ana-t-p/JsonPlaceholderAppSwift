@@ -55,11 +55,13 @@ struct SelectedUser {
             
             var photo: UIImage?
             var posts: [String]?
+            var thereAreTodos: Bool
         }
         struct ViewModel {
             
             var photo: UIImage?
             var posts: [String]?
+            var thereAreTodos: Bool
         }
     }
     

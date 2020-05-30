@@ -21,7 +21,7 @@ class TodoListPresenter: TodoListPresentationLogic {
     // MARK: Methods
     func presentUserTodoList(response: TodoList.UserTodoList.Response) {
         
-        let viewModel = TodoList.UserTodoList.ViewModel(todoList: response.todoList)
+        let viewModel = TodoList.UserTodoList.ViewModel(name: response.name, todoList: response.todoList)
         viewController?.displayUserTodoList(viewModel: viewModel)
     }
     

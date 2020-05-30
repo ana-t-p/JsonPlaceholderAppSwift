@@ -38,7 +38,7 @@ class SelectedUserPresenter: SelectedUserPresentationLogic {
     
     func presentUserDetails(response: SelectedUser.UserDetails.Response) {
         
-        let viewModel = SelectedUser.UserDetails.ViewModel(photo: response.photo, posts: response.posts)
+        let viewModel = SelectedUser.UserDetails.ViewModel(photo: response.photo, posts: response.posts, thereAreTodos: response.thereAreTodos)
         viewController?.displayUserDetails(viewModel: viewModel)
     }
     

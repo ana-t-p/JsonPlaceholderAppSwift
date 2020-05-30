@@ -17,6 +17,7 @@ protocol SelectedUserBusinessLogic {
 protocol SelectedUserDataStore {
     
     var selectedUser: ChoosenUser? { get set }
+    var name: String? { get set }
     var todoList: [SingleTodo]? { get set }
 }
 
@@ -25,6 +26,7 @@ class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
     var presenter: SelectedUserPresentationLogic?
     var worker: SelectedUserWorker?
     var selectedUser: ChoosenUser?
+    var name: String?
     var todoList: [SingleTodo]?
 
     // MARK: Methods
@@ -32,6 +34,7 @@ class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
         
         if let selectedUser = selectedUser {
             
+            name = selectedUser.surname
             let response = SelectedUser.UserInformation.Response(selectedUser: selectedUser)
             presenter?.presentUserInformation(response: response)
         } else {
@@ -48,7 +51,8 @@ class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
             worker = SelectedUserWorker()
             worker?.getSelectedUserDetails(selectedUser.id, result: { [weak self] (photo, posts, todoList, errorDetails) in
                 
-                let response = SelectedUser.UserDetails.Response(photo: photo?.photo, posts: posts?.bodies)
+                self?.todoList = todoList?.todoList
+                let response = SelectedUser.UserDetails.Response(photo: photo?.photo, posts: posts?.bodies, thereAreTodos: todoList?.todoList?.isEmpty == false ? true : false)
                 self?.presenter?.presentUserDetails(response: response)
                 
                 if !errorDetails.isEmpty {

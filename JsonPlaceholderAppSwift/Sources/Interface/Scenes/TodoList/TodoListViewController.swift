@@ -71,6 +71,8 @@ class TodoListViewController: UIViewController, TodoListDisplayLogic {
         tableView.dataSource = self
         tableView.register(TodoListTableViewCell.self, forCellReuseIdentifier: "todoListTableViewCell")
         tableView.register(UINib(nibName: "TodoListTableViewCell", bundle: .main), forCellReuseIdentifier: "todoListTableViewCell")
+        tableView.estimatedRowHeight = 50.0
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: Actions
@@ -90,12 +92,17 @@ extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as? TodoListTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "todoListTableViewCell", for: indexPath) as? TodoListTableViewCell else {
             
             return UITableViewCell()
         }
-        
+        cell.configCell(done: todos[indexPath.row].done, text: todos[indexPath.row].text)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
     }
 }
 
@@ -114,6 +121,7 @@ extension TodoListViewController {
     
     func displayUserTodoList(viewModel: TodoList.UserTodoList.ViewModel) {
         
+        titleLabel.text = String(format: "todolist.title".localized, viewModel.name)
         todos = viewModel.todoList
         ui { [weak self] in
             self?.tableView.reloadData()

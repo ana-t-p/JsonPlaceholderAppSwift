@@ -16,6 +16,7 @@ class TodoListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         
         super.awakeFromNib()
+        todoLabel.sizeToFit()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

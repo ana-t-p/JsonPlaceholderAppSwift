@@ -27,11 +27,13 @@ struct TodoList {
         
         struct Response {
             
+            var name: String
             var todoList: [SingleTodo]
         }
         
         struct ViewModel {
             
+            var name: String
             var todoList: [SingleTodo]
         }
     }

@@ -39,13 +39,14 @@ class SelectedUserRouter: NSObject, SelectedUserRoutingLogic, SelectedUserDataPa
     // MARK: Navigation
     func navigateToUserTodoList(source: SelectedUserViewController, destination: TodoListViewController) {
         
-        destination.modalPresentationStyle = .fullScreen
+        destination.modalPresentationStyle = .overFullScreen
         source.present(destination, animated: true, completion: nil)
     }
     
     // MARK: Passing data
     func passDataToUserTodoList(source: SelectedUserDataStore, destination: inout TodoListDataStore) {
         
+        destination.name = source.name
         destination.todoList = source.todoList
     }
 }

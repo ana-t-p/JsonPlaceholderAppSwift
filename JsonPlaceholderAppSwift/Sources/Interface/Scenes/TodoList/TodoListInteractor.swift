@@ -15,6 +15,7 @@ protocol TodoListBusinessLogic {
 
 protocol TodoListDataStore {
     
+    var name: String? { get set }
     var todoList: [SingleTodo]? { get set }
 }
 
@@ -22,14 +23,15 @@ class TodoListInteractor: TodoListBusinessLogic, TodoListDataStore {
     
     var presenter: TodoListPresentationLogic?
     var worker: TodoListWorker?
+    var name: String?
     var todoList: [SingleTodo]?
     
     // MARK: Methods
     func doSetUserTodoList(request: TodoList.UserTodoList.Request) {
         
-        if let todoList = todoList {
+        if let name = name, let todoList = todoList {
             
-            let response = TodoList.UserTodoList.Response(todoList: todoList)
+            let response = TodoList.UserTodoList.Response(name: name, todoList: todoList)
             presenter?.presentUserTodoList(response: response)
         } else {
             

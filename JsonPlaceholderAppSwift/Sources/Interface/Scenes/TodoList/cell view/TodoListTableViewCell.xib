@@ -12,34 +12,43 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="todoListTableViewCell" id="KGk-i7-Jjw" customClass="TodoListTableViewCell" customModule="JsonPlaceholderAppSwift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aLD-1q-M6W">
-                        <rect key="frame" x="10" y="8" width="51" height="28"/>
+                        <rect key="frame" x="10" y="8" width="52" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="EzQ-FH-WOC"/>
+                        </constraints>
                         <color key="onTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </switch>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfG-gK-Awr">
-                        <rect key="frame" x="74" y="12" width="236" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfG-gK-Awr">
+                        <rect key="frame" x="75" y="8" width="200" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="RMd-Of-9eL"/>
+                        </constraints>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="bfG-gK-Awr" secondAttribute="bottom" constant="5" id="3Xn-hI-lVL"/>
                     <constraint firstItem="aLD-1q-M6W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="4Au-iP-qON"/>
                     <constraint firstAttribute="bottom" secondItem="aLD-1q-M6W" secondAttribute="bottom" constant="8" id="9Tc-qY-TKc"/>
                     <constraint firstItem="aLD-1q-M6W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="AAQ-3G-LYf"/>
+                    <constraint firstItem="bfG-gK-Awr" firstAttribute="top" secondItem="aLD-1q-M6W" secondAttribute="top" id="Ly0-Qm-Geu"/>
                     <constraint firstAttribute="trailing" secondItem="bfG-gK-Awr" secondAttribute="trailing" constant="10" id="eKh-Lk-Bou"/>
-                    <constraint firstItem="bfG-gK-Awr" firstAttribute="centerY" secondItem="aLD-1q-M6W" secondAttribute="centerY" id="k8f-KJ-sSq"/>
                     <constraint firstItem="bfG-gK-Awr" firstAttribute="leading" secondItem="aLD-1q-M6W" secondAttribute="trailing" constant="15" id="oDf-ez-Tty"/>
+                    <constraint firstAttribute="bottom" secondItem="bfG-gK-Awr" secondAttribute="bottom" constant="5" id="vKE-JD-9U7"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="switch" destination="aLD-1q-M6W" id="vij-iX-yQg"/>
                 <outlet property="switcher" destination="aLD-1q-M6W" id="FA5-Fe-bX4"/>
                 <outlet property="todoLabel" destination="bfG-gK-Awr" id="nXF-9R-6Mi"/>
             </connections>

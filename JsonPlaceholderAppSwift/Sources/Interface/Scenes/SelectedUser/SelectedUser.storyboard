@@ -15,11 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="yzR-4n-pCC">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="yzR-4n-pCC">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="aPG-r5-L5h">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="820.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="955.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8F-A0-jdc" userLabel="Image View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
@@ -128,37 +128,45 @@
                                                     <constraint firstItem="eUs-qV-8RW" firstAttribute="leading" secondItem="EPX-Fn-D1I" secondAttribute="leading" constant="21" id="zaq-BB-lju"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFe-Oo-7l6" userLabel="Button View">
+                                                <rect key="frame" x="0.0" y="845.5" width="414" height="110"/>
+                                                <subviews>
+                                                    <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgy-MA-sW2">
+                                                        <rect key="frame" x="30" y="30" width="354" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="w9t-JV-9NS"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="TODO list" image="pencil" catalog="system"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="25"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="todoButtonAction:" destination="Geu-Y7-Q6F" eventType="touchUpInside" id="B99-Pf-CaP"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="fgy-MA-sW2" secondAttribute="bottom" constant="30" id="BYg-mA-1VV"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fgy-MA-sW2" secondAttribute="trailing" constant="30" id="Kek-i8-fmq"/>
+                                                    <constraint firstItem="fgy-MA-sW2" firstAttribute="top" secondItem="XFe-Oo-7l6" secondAttribute="top" constant="30" id="VD9-PO-Vys"/>
+                                                    <constraint firstItem="fgy-MA-sW2" firstAttribute="leading" secondItem="XFe-Oo-7l6" secondAttribute="leading" constant="30" id="dm4-N0-1CO"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgy-MA-sW2">
-                                        <rect key="frame" x="30" y="850.5" width="354" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="w9t-JV-9NS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="TODO list" image="pencil" catalog="system"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="25"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="todoButtonAction:" destination="Geu-Y7-Q6F" eventType="touchUpInside" id="B99-Pf-CaP"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="fgy-MA-sW2" firstAttribute="leading" secondItem="IVA-Df-cwf" secondAttribute="leading" constant="30" id="5ky-29-EJp"/>
-                                    <constraint firstItem="IVA-Df-cwf" firstAttribute="trailing" secondItem="fgy-MA-sW2" secondAttribute="trailing" constant="30" id="EE1-oR-YPD"/>
+                                    <constraint firstItem="IVA-Df-cwf" firstAttribute="height" secondItem="aPG-r5-L5h" secondAttribute="height" id="Ddz-K3-OqT"/>
                                     <constraint firstItem="aPG-r5-L5h" firstAttribute="leading" secondItem="IVA-Df-cwf" secondAttribute="leading" id="Ots-G7-KT4"/>
                                     <constraint firstItem="aPG-r5-L5h" firstAttribute="top" secondItem="IVA-Df-cwf" secondAttribute="top" id="afp-BU-tmP"/>
-                                    <constraint firstItem="fgy-MA-sW2" firstAttribute="top" secondItem="aPG-r5-L5h" secondAttribute="bottom" constant="30" id="hrU-Uw-Nqh"/>
                                     <constraint firstItem="aPG-r5-L5h" firstAttribute="width" secondItem="hxa-Js-Usa" secondAttribute="width" id="jiI-mZ-ubD"/>
                                     <constraint firstItem="aPG-r5-L5h" firstAttribute="trailing" secondItem="IVA-Df-cwf" secondAttribute="trailing" id="lug-xH-sHt"/>
-                                    <constraint firstItem="IVA-Df-cwf" firstAttribute="bottom" secondItem="fgy-MA-sW2" secondAttribute="bottom" constant="30" id="sCP-wk-Rz0"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="IVA-Df-cwf"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="hxa-Js-Usa"/>
@@ -175,12 +183,14 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="Qei-5J-sTa" id="CpV-vG-BC0"/>
+                        <outlet property="buttonHolder" destination="XFe-Oo-7l6" id="ML1-xx-WaG"/>
                         <outlet property="collectionHolder" destination="EPX-Fn-D1I" id="cgh-uX-qV1"/>
                         <outlet property="collectionView" destination="eUs-qV-8RW" id="Zgw-mF-FiW"/>
                         <outlet property="emailLabel" destination="ADj-Gr-frM" id="lje-gC-mZI"/>
                         <outlet property="imageView" destination="p1H-C8-SUe" id="mhE-Q0-2AU"/>
                         <outlet property="nameLabel" destination="0kL-BS-SQa" id="gS1-fD-Mlq"/>
                         <outlet property="phoneLabel" destination="NrQ-Wv-tnt" id="i9n-rt-L08"/>
+                        <outlet property="postsLabel" destination="flJ-Ou-GZJ" id="ete-hX-WmH"/>
                         <outlet property="todoButton" destination="fgy-MA-sW2" id="LPZ-LQ-AEo"/>
                     </connections>
                 </viewController>
