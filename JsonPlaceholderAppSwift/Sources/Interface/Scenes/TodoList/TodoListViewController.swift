@@ -10,13 +10,20 @@ import UIKit
 
 protocol TodoListDisplayLogic: class {
     
-    func displaySomething(viewModel: TodoList.Something.ViewModel)
+    func displayUserTodoList(viewModel: TodoList.UserTodoList.ViewModel)
+    func displayUserTodoListError(viewModel: TodoList.UserTodoListError.ViewModel)
 }
 
 class TodoListViewController: UIViewController, TodoListDisplayLogic {
-    
+
     var interactor: TodoListBusinessLogic?
     var router: (NSObjectProtocol & TodoListRoutingLogic & TodoListDataPassing)?
+    
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var todos: [SingleTodo] = []
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -50,9 +57,82 @@ class TodoListViewController: UIViewController, TodoListDisplayLogic {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        setupView()
+        trySetUserTodoList()
     }
     
-    func displaySomething(viewModel: TodoList.Something.ViewModel) {
+    // MARK: Methods
+    private func setupView() {
         
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(TodoListTableViewCell.self, forCellReuseIdentifier: "todoListTableViewCell")
+        tableView.register(UINib(nibName: "TodoListTableViewCell", bundle: .main), forCellReuseIdentifier: "todoListTableViewCell")
+    }
+    
+    // MARK: Actions
+    @IBAction func close(_ sender: Any) {
+        
+        prepareForSelectedUser()
+    }
+}
+
+// MARK: - Delegates
+extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return todos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as? TodoListTableViewCell else {
+            
+            return UITableViewCell()
+        }
+        
+        return cell
+    }
+}
+
+// MARK: - Input
+extension TodoListViewController {
+    
+    private func trySetUserTodoList() {
+        
+        let request = TodoList.UserTodoList.Request()
+        interactor?.doSetUserTodoList(request: request)
+    }
+}
+
+// MARK: - Output
+extension TodoListViewController {
+    
+    func displayUserTodoList(viewModel: TodoList.UserTodoList.ViewModel) {
+        
+        todos = viewModel.todoList
+        ui { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func displayUserTodoListError(viewModel: TodoList.UserTodoListError.ViewModel) {
+        
+        ErrorPopup.showErrorPopup(viewModel.error, vc: self)
+    }
+}
+
+
+// MARK: - Route
+extension TodoListViewController {
+    
+    private func prepareForSelectedUser() {
+        
+        router?.routeToSelectedUser()
     }
 }

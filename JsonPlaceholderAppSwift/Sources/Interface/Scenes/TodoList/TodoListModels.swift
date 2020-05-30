@@ -8,12 +8,41 @@
 
 import UIKit
 
+struct SingleTodo {
+    
+    var done: Bool
+    var text: String
+}
+
 struct TodoList {
     
-    struct Something {
+    struct UserTodoList {
         
         struct Request {}
-        struct Response {}
-        struct ViewModel {}
+        
+        struct Response {
+            
+            var todoList: [SingleTodo]
+        }
+        
+        struct ViewModel {
+            
+            var todoList: [SingleTodo]
+        }
+    }
+    
+    struct UserTodoListError {
+        
+        struct Request {}
+        
+        struct Response {
+            
+            var error: String
+        }
+        
+        struct ViewModel {
+            
+            var error: String
+        }
     }
 }

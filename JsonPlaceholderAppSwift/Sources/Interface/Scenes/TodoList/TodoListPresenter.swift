@@ -10,7 +10,8 @@ import UIKit
 
 protocol TodoListPresentationLogic {
     
-    func presentSomething(response: TodoList.Something.Response)
+    func presentUserTodoList(response: TodoList.UserTodoList.Response)
+    func presentUserTodoListError(response: TodoList.UserTodoListError.Response)
 }
 
 class TodoListPresenter: TodoListPresentationLogic {
@@ -18,9 +19,15 @@ class TodoListPresenter: TodoListPresentationLogic {
     weak var viewController: TodoListDisplayLogic?
     
     // MARK: Methods
-    func presentSomething(response: TodoList.Something.Response) {
+    func presentUserTodoList(response: TodoList.UserTodoList.Response) {
         
-        let viewModel = TodoList.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+        let viewModel = TodoList.UserTodoList.ViewModel(todoList: response.todoList)
+        viewController?.displayUserTodoList(viewModel: viewModel)
+    }
+    
+    func presentUserTodoListError(response: TodoList.UserTodoListError.Response) {
+        
+        let viewModel = TodoList.UserTodoListError.ViewModel(error: response.error)
+        viewController?.displayUserTodoListError(viewModel: viewModel)
     }
 }

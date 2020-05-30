@@ -9,27 +9,32 @@
 import UIKit
 
 protocol TodoListBusinessLogic {
-    func doSomething(request: TodoList.Something.Request)
+    
+    func doSetUserTodoList(request: TodoList.UserTodoList.Request)
 }
 
 protocol TodoListDataStore {
-    //var name: String { get set }
+    
+    var todoList: [SingleTodo]? { get set }
 }
 
 class TodoListInteractor: TodoListBusinessLogic, TodoListDataStore {
     
     var presenter: TodoListPresentationLogic?
     var worker: TodoListWorker?
-    //var name: String = ""
+    var todoList: [SingleTodo]?
     
-    // MARK: Do something
-    
-    func doSomething(request: TodoList.Something.Request) {
+    // MARK: Methods
+    func doSetUserTodoList(request: TodoList.UserTodoList.Request) {
         
-        worker = TodoListWorker()
-        worker?.doSomeWork()
-        
-        let response = TodoList.Something.Response()
-        presenter?.presentSomething(response: response)
+        if let todoList = todoList {
+            
+            let response = TodoList.UserTodoList.Response(todoList: todoList)
+            presenter?.presentUserTodoList(response: response)
+        } else {
+            
+            let response = TodoList.UserTodoListError.Response(error: ErrorCases.apiCalling.localizedDescription)
+            presenter?.presentUserTodoListError(response: response)
+        }
     }
 }
