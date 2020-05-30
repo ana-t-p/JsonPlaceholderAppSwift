@@ -14,6 +14,11 @@ struct SingleTodo {
     var text: String
 }
 
+struct TodoListConfiguration {
+    
+    var todoList: [SingleTodo]?
+}
+
 struct TodoList {
     
     struct UserTodoList {

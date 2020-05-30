@@ -78,4 +78,23 @@ class SelectedUserWorker {
             }
         }
     }
+    
+    func getTodoList(id: Int, result: @escaping TodoListWorkerCompletionHandler) {
+                
+        JSONPlaceholderAPI.getUserTODOList(id) { (todoListResponseData, error) in
+            
+            if let error = error {
+                
+                result(JSONPlaceholderAPITodoListResult.failure(error: error))
+            } else if let todoListResponseData = todoListResponseData {
+    
+                var todoList = [SingleTodo]()
+                for todo in todoListResponseData {
+                    
+                    todoList.append(SingleTodo(done: todo.completed, text: todo.title))
+                }
+                result(JSONPlaceholderAPITodoListResult.success(data: TodoListConfiguration(todoList: todoList)))
+            }
+        }
+    }
 }

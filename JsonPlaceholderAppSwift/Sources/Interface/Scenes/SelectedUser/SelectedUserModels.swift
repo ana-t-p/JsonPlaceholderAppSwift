@@ -99,4 +99,24 @@ struct SelectedUser {
             var error: String
         }
     }
+    
+    struct UserTodoList {
+        
+        struct Request {}
+        struct Response {}
+        struct ViewModel {}
+    }
+    
+    struct UserTodoListError {
+        
+        struct Request {}
+        struct Response {
+            
+            var error: String
+        }
+        struct ViewModel {
+            
+            var error: String
+        }
+    }
 }

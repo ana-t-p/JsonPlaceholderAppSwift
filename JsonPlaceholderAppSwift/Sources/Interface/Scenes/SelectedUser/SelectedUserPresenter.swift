@@ -16,6 +16,8 @@ protocol SelectedUserPresentationLogic {
     func presentUserPostsError(response: SelectedUser.UserPostsError.Response)
     func presentUserPhoto(response: SelectedUser.UserPhoto.Response)
     func presentUserPhotoError(response: SelectedUser.UserPhotoError.Response)
+    func presentUserTodoList(response: SelectedUser.UserTodoList.Response)
+    func presentUserTodoListError(response: SelectedUser.UserTodoListError.Response)
 }
 
 class SelectedUserPresenter: SelectedUserPresentationLogic {
@@ -60,5 +62,17 @@ class SelectedUserPresenter: SelectedUserPresentationLogic {
         
         let viewModel = SelectedUser.UserPhotoError.ViewModel(error: response.error)
         viewController?.displayUserPhotoError(viewModel: viewModel)
+    }
+    
+    func presentUserTodoList(response: SelectedUser.UserTodoList.Response) {
+        
+        let viewModel = SelectedUser.UserTodoList.ViewModel()
+        viewController?.displayUserTodoList(viewModel: viewModel)
+    }
+    
+    func presentUserTodoListError(response: SelectedUser.UserTodoListError.Response) {
+        
+        let viewModel = SelectedUser.UserTodoListError.ViewModel(error: response.error)
+        viewController?.displayUserTodoListError(viewModel: viewModel)
     }
 }

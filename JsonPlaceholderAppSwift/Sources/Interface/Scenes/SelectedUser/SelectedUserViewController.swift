@@ -16,6 +16,8 @@ protocol SelectedUserDisplayLogic: class {
     func displayUserPostsError(viewModel: SelectedUser.UserPostsError.ViewModel)
     func displayUserPhoto(viewModel: SelectedUser.UserPhoto.ViewModel)
     func displayUserPhotoError(viewModel: SelectedUser.UserPhotoError.ViewModel)
+    func displayUserTodoList(viewModel: SelectedUser.UserTodoList.ViewModel)
+    func displayUserTodoListError(viewModel: SelectedUser.UserTodoListError.ViewModel)
 }
 
 class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
@@ -102,6 +104,7 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
     // MARK: Actions
     @IBAction func todoButtonAction(_ sender: Any) {
         
+        tryGetUserTodoList()
     }
 }
 
@@ -142,6 +145,12 @@ extension SelectedUserViewController {
         
         let request = SelectedUser.UserPosts.Request()
         interactor?.doGetUserPosts(request: request)
+    }
+    
+    private func tryGetUserTodoList() {
+        
+        let request = SelectedUser.UserTodoList.Request()
+        interactor?.doGetUserTodoList(request: request)
     }
 }
 
@@ -188,5 +197,24 @@ extension SelectedUserViewController {
             self?.collectionHolder.isHidden = true
         }
         ErrorPopup.showErrorPopup(viewModel.error, vc: self)
+    }
+    
+    func displayUserTodoList(viewModel: SelectedUser.UserTodoList.ViewModel) {
+        
+        prepareForUserTodoList()
+    }
+    
+    func displayUserTodoListError(viewModel: SelectedUser.UserTodoListError.ViewModel) {
+        
+        ErrorPopup.showErrorPopup(viewModel.error, vc: self)
+    }
+}
+
+// MARK: - Route
+extension SelectedUserViewController {
+    
+    private func prepareForUserTodoList() {
+        
+        router?.routeToUserTodoList()
     }
 }

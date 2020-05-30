@@ -10,7 +10,7 @@ import UIKit
 
 @objc protocol SelectedUserRoutingLogic {
     
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToUserTodoList()
 }
 
 protocol SelectedUserDataPassing {
@@ -24,33 +24,27 @@ class SelectedUserRouter: NSObject, SelectedUserRoutingLogic, SelectedUserDataPa
     var dataStore: SelectedUserDataStore?
     
     // MARK: Routing
-    
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
+    func routeToUserTodoList() {
+        
+        let storyboard = UIStoryboard(name: "TodoList", bundle: nil)
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "TodoListViewController") as? TodoListViewController,
+              var destinationDS = destinationVC.router?.dataStore,
+              let dataStore = dataStore,
+              let viewController = viewController else { return }
+        
+        passDataToUserTodoList(source: dataStore, destination: &destinationDS)
+        navigateToUserTodoList(source: viewController, destination: destinationVC)
+    }
     
     // MARK: Navigation
-    
-    //func navigateToSomewhere(source: SelectedUserViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
+    func navigateToUserTodoList(source: SelectedUserViewController, destination: TodoListViewController) {
+        
+        source.present(destination, animated: true, completion: nil)
+    }
     
     // MARK: Passing data
-    
-    //func passDataToSomewhere(source: SelectedUserDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    func passDataToUserTodoList(source: SelectedUserDataStore, destination: inout TodoListDataStore) {
+        
+        destination.todoList = source.todoList
+    }
 }

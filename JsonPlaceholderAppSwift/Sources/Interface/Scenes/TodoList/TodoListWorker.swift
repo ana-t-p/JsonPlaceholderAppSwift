@@ -8,4 +8,13 @@
 
 import UIKit
 
+enum JSONPlaceholderAPITodoListResult {
+    
+    case success(data: TodoListConfiguration)
+    case failure(error: Error)
+}
+
+typealias TodoListWorkerCompletionHandler = (_ data: JSONPlaceholderAPITodoListResult) -> Void
+
+
 class TodoListWorker {}

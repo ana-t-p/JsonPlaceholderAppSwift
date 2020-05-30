@@ -13,18 +13,21 @@ protocol SelectedUserBusinessLogic {
     func doSetUserInformation(request: SelectedUser.UserInformation.Request)
     func doGetUserPhoto(request: SelectedUser.UserPhoto.Request)
     func doGetUserPosts(request: SelectedUser.UserPosts.Request)
+    func doGetUserTodoList(request: SelectedUser.UserTodoList.Request)
 }
 
 protocol SelectedUserDataStore {
     
     var selectedUser: ChoosenUser? { get set }
+    var todoList: [SingleTodo]? { get set }
 }
 
 class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
-    
+
     var presenter: SelectedUserPresentationLogic?
     var worker: SelectedUserWorker?
     var selectedUser: ChoosenUser?
+    var todoList: [SingleTodo]?
 
     // MARK: Methods
     func doSetUserInformation(request: SelectedUser.UserInformation.Request) {
@@ -111,6 +114,39 @@ class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
             
             let response = SelectedUser.UserPostsError.Response(error: ErrorCases.userNotFound.localizedDescription)
             presenter?.presentUserPostsError(response: response)
+        }
+    }
+    
+    func doGetUserTodoList(request: SelectedUser.UserTodoList.Request) {
+        
+        if let selectedUser = selectedUser {
+            
+            worker = SelectedUserWorker()
+            worker?.getTodoList(id: selectedUser.id, result: { [weak self] (responseFromWorker) in
+           
+                switch responseFromWorker {
+                    
+                case .success(data: let data):
+                    
+                    if let todoList = data.todoList {
+
+                        self?.todoList = todoList
+                        let response = SelectedUser.UserTodoList.Response()
+                        self?.presenter?.presentUserTodoList(response: response)
+                    } else {
+                        
+                        let response = SelectedUser.UserTodoListError.Response(error: ErrorCases.apiCalling.localizedDescription)
+                        self?.presenter?.presentUserTodoListError(response: response)
+                    }
+                case .failure(error: let error):
+                    let response = SelectedUser.UserTodoListError.Response(error: error.localizedDescription)
+                    self?.presenter?.presentUserTodoListError(response: response)
+                }
+            })
+        } else {
+            
+            let response = SelectedUser.UserTodoListError.Response(error: ErrorCases.userNotFound.localizedDescription)
+            presenter?.presentUserTodoListError(response: response)
         }
     }
 }
