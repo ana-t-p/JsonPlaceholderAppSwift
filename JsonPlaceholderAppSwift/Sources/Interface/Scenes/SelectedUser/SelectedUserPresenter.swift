@@ -12,12 +12,8 @@ protocol SelectedUserPresentationLogic {
     
     func presentUserInformation(response: SelectedUser.UserInformation.Response)
     func presentUserInformationError(response: SelectedUser.UserInformationError.Response)
-    func presentUserPosts(response: SelectedUser.UserPosts.Response)
-    func presentUserPostsError(response: SelectedUser.UserPostsError.Response)
-    func presentUserPhoto(response: SelectedUser.UserPhoto.Response)
-    func presentUserPhotoError(response: SelectedUser.UserPhotoError.Response)
-    func presentUserTodoList(response: SelectedUser.UserTodoList.Response)
-    func presentUserTodoListError(response: SelectedUser.UserTodoListError.Response)
+    func presentUserDetails(response: SelectedUser.UserDetails.Response)
+    func presentUserDetailsError(response: SelectedUser.UserDetailsError.Response)
 }
 
 class SelectedUserPresenter: SelectedUserPresentationLogic {
@@ -40,39 +36,15 @@ class SelectedUserPresenter: SelectedUserPresentationLogic {
         viewController?.displayUserInformationError(viewModel: viewModel)
     }
     
-    func presentUserPosts(response: SelectedUser.UserPosts.Response) {
+    func presentUserDetails(response: SelectedUser.UserDetails.Response) {
         
-        let viewModel = SelectedUser.UserPosts.ViewModel(posts: response.posts)
-        viewController?.displayUserPosts(viewModel: viewModel)
+        let viewModel = SelectedUser.UserDetails.ViewModel(photo: response.photo, posts: response.posts)
+        viewController?.displayUserDetails(viewModel: viewModel)
     }
     
-    func presentUserPostsError(response: SelectedUser.UserPostsError.Response) {
+    func presentUserDetailsError(response: SelectedUser.UserDetailsError.Response) {
         
-        let viewModel = SelectedUser.UserPostsError.ViewModel(error: response.error)
-        viewController?.displayUserPostsError(viewModel: viewModel)
-    }
-    
-    func presentUserPhoto(response: SelectedUser.UserPhoto.Response) {
-        
-        let viewModel = SelectedUser.UserPhoto.ViewModel(photo: response.photo)
-        viewController?.displayUserPhoto(viewModel: viewModel)
-    }
-    
-    func presentUserPhotoError(response: SelectedUser.UserPhotoError.Response) {
-        
-        let viewModel = SelectedUser.UserPhotoError.ViewModel(error: response.error)
-        viewController?.displayUserPhotoError(viewModel: viewModel)
-    }
-    
-    func presentUserTodoList(response: SelectedUser.UserTodoList.Response) {
-        
-        let viewModel = SelectedUser.UserTodoList.ViewModel()
-        viewController?.displayUserTodoList(viewModel: viewModel)
-    }
-    
-    func presentUserTodoListError(response: SelectedUser.UserTodoListError.Response) {
-        
-        let viewModel = SelectedUser.UserTodoListError.ViewModel(error: response.error)
-        viewController?.displayUserTodoListError(viewModel: viewModel)
+        let viewModel = SelectedUser.UserInformationError.ViewModel(error: response.error)
+        viewController?.displayUserInformationError(viewModel: viewModel)
     }
 }

@@ -48,66 +48,22 @@ struct SelectedUser {
         }
     }
     
-    struct UserPosts {
-        
-        struct Request {}
-        struct Response {
-            
-            var posts: [String]
-        }
-        struct ViewModel {
-            
-            var posts: [String]
-        }
-    }
-    
-    struct UserPostsError {
-        
-        struct Request {}
-        struct Response {
-            
-            var error: String
-        }
-        struct ViewModel {
-            
-            var error: String
-        }
-    }
-    
-    struct UserPhoto {
+    struct UserDetails {
         
         struct Request {}
         struct Response {
             
             var photo: UIImage?
+            var posts: [String]?
         }
         struct ViewModel {
             
             var photo: UIImage?
+            var posts: [String]?
         }
     }
     
-    struct UserPhotoError {
-        
-        struct Request {}
-        struct Response {
-            
-            var error: String
-        }
-        struct ViewModel {
-            
-            var error: String
-        }
-    }
-    
-    struct UserTodoList {
-        
-        struct Request {}
-        struct Response {}
-        struct ViewModel {}
-    }
-    
-    struct UserTodoListError {
+    struct UserDetailsError {
         
         struct Request {}
         struct Response {

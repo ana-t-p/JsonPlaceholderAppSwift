@@ -39,6 +39,7 @@ class SelectedUserRouter: NSObject, SelectedUserRoutingLogic, SelectedUserDataPa
     // MARK: Navigation
     func navigateToUserTodoList(source: SelectedUserViewController, destination: TodoListViewController) {
         
+        destination.modalPresentationStyle = .fullScreen
         source.present(destination, animated: true, completion: nil)
     }
     

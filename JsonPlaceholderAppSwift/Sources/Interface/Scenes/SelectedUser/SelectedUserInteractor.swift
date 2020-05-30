@@ -11,9 +11,7 @@ import UIKit
 protocol SelectedUserBusinessLogic {
     
     func doSetUserInformation(request: SelectedUser.UserInformation.Request)
-    func doGetUserPhoto(request: SelectedUser.UserPhoto.Request)
-    func doGetUserPosts(request: SelectedUser.UserPosts.Request)
-    func doGetUserTodoList(request: SelectedUser.UserTodoList.Request)
+    func doGetUserDetails(request: SelectedUser.UserDetails.Request)
 }
 
 protocol SelectedUserDataStore {
@@ -43,110 +41,22 @@ class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
         }
     }
     
-    func doGetUserPhoto(request: SelectedUser.UserPhoto.Request) {
+    func doGetUserDetails(request: SelectedUser.UserDetails.Request) {
         
         if let selectedUser = selectedUser {
-            
-            worker = SelectedUserWorker()
-            worker?.getAlbum(id: selectedUser.id, result: { [weak self] (id, error)  in
-           
-                if let id = id {
-                    
-                    self?.worker?.getPhoto(id: id, result: { (responseFromWorker) in
-                        
-                        switch responseFromWorker {
-                            
-                        case .success(data: let data):
-                            
-                            if let photo = data.photo {
 
-                                let response = SelectedUser.UserPhoto.Response(photo: photo)
-                                self?.presenter?.presentUserPhoto(response: response)
-                            } else {
-                                
-                                let response = SelectedUser.UserPhotoError.Response(error: ErrorCases.apiCalling.localizedDescription)
-                                self?.presenter?.presentUserPhotoError(response: response)
-                            }
-                        case .failure(error: let error):
-                            let response = SelectedUser.UserPhotoError.Response(error: error.localizedDescription)
-                            self?.presenter?.presentUserPhotoError(response: response)
-                        }
-                    })
-                } else {
+            worker = SelectedUserWorker()
+            worker?.getSelectedUserDetails(selectedUser.id, result: { [weak self] (photo, posts, todoList, errorDetails) in
+                
+                let response = SelectedUser.UserDetails.Response(photo: photo?.photo, posts: posts?.bodies)
+                self?.presenter?.presentUserDetails(response: response)
+                
+                if !errorDetails.isEmpty {
                     
-                    let response = SelectedUser.UserPhotoError.Response(error: ErrorCases.apiCalling.localizedDescription)
-                    self?.presenter?.presentUserPhotoError(response: response)
+                    let responseError = SelectedUser.UserDetailsError.Response(error: errorDetails)
+                    self?.presenter?.presentUserDetailsError(response: responseError)
                 }
             })
-        } else {
-            
-            let response = SelectedUser.UserPhotoError.Response(error: ErrorCases.userNotFound.localizedDescription)
-            presenter?.presentUserPhotoError(response: response)
-        }
-    }
-    
-    func doGetUserPosts(request: SelectedUser.UserPosts.Request) {
-        
-        if let selectedUser = selectedUser {
-            
-            worker = SelectedUserWorker()
-            worker?.getPosts(id: selectedUser.id, result: { [weak self] (responseFromWorker) in
-           
-                switch responseFromWorker {
-                    
-                case .success(data: let data):
-                    
-                    if let bodies = data.bodies {
-
-                        let response = SelectedUser.UserPosts.Response(posts: bodies)
-                        self?.presenter?.presentUserPosts(response: response)
-                    } else {
-                        
-                        let response = SelectedUser.UserPostsError.Response(error: ErrorCases.apiCalling.localizedDescription)
-                        self?.presenter?.presentUserPostsError(response: response)
-                    }
-                case .failure(error: let error):
-                    let response = SelectedUser.UserPostsError.Response(error: error.localizedDescription)
-                    self?.presenter?.presentUserPostsError(response: response)
-                }
-            })
-        } else {
-            
-            let response = SelectedUser.UserPostsError.Response(error: ErrorCases.userNotFound.localizedDescription)
-            presenter?.presentUserPostsError(response: response)
-        }
-    }
-    
-    func doGetUserTodoList(request: SelectedUser.UserTodoList.Request) {
-        
-        if let selectedUser = selectedUser {
-            
-            worker = SelectedUserWorker()
-            worker?.getTodoList(id: selectedUser.id, result: { [weak self] (responseFromWorker) in
-           
-                switch responseFromWorker {
-                    
-                case .success(data: let data):
-                    
-                    if let todoList = data.todoList {
-
-                        self?.todoList = todoList
-                        let response = SelectedUser.UserTodoList.Response()
-                        self?.presenter?.presentUserTodoList(response: response)
-                    } else {
-                        
-                        let response = SelectedUser.UserTodoListError.Response(error: ErrorCases.apiCalling.localizedDescription)
-                        self?.presenter?.presentUserTodoListError(response: response)
-                    }
-                case .failure(error: let error):
-                    let response = SelectedUser.UserTodoListError.Response(error: error.localizedDescription)
-                    self?.presenter?.presentUserTodoListError(response: response)
-                }
-            })
-        } else {
-            
-            let response = SelectedUser.UserTodoListError.Response(error: ErrorCases.userNotFound.localizedDescription)
-            presenter?.presentUserTodoListError(response: response)
         }
     }
 }

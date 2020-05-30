@@ -27,36 +27,84 @@ typealias SelectedUserWorkerCompletionHandler2 = (_ data: JSONPlaceholderAPIPhot
 
 class SelectedUserWorker {
     
-    func getPosts(id: Int, result: @escaping SelectedUserWorkerCompletionHandler) {
-                
-        JSONPlaceholderAPI.getUserPosts(id) { (postResponseData, error) in
+    func getSelectedUserDetails(_ id: Int, result: @escaping (_ userPhoto: PhotoConfiguration?, _ userPosts: PostsConfiguration?, _ userTodos: TodoListConfiguration?, _ errors: String) -> Void) {
+        
+        var userPhoto: PhotoConfiguration?
+        var userPosts: PostsConfiguration?
+        var userTodos: TodoListConfiguration?
+        var errors = [Error]()
+        var errorDetails = ""
+        let group = DispatchGroup()
+        
+        group.enter()
+        getAlbum(id: id) { (photo, error) in
             
-            if let error = error {
+            if let photo = photo {
                 
-                result(JSONPlaceholderAPIPostsResult.failure(error: error))
-            } else if let postResponseData = postResponseData {
+                userPhoto = photo
+            } else if let error = error {
                 
-                let bodies = postResponseData.map({ $0.body })
-                result(JSONPlaceholderAPIPostsResult.success(data: PostsConfiguration(bodies: bodies)))
+                errors.append(error)
             }
+            group.leave()
+        }
+        group.enter()
+        getPosts(id: id) { (response) in
+            
+            switch response {
+                
+            case .success(data: let data):
+                userPosts = PostsConfiguration(bodies: data.bodies)
+            case .failure(error: let error):
+                errors.append(error)
+            }
+            group.leave()
+        }
+        group.enter()
+        getTodoList(id: id) { (response) in
+            
+            switch response {
+                
+            case .success(data: let data):
+                userTodos = TodoListConfiguration(todoList: data.todoList)
+            case .failure(error: let error):
+                errors.append(error)
+            }
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            
+            let arrayErrors = errors.map({ $0.localizedDescription })
+            errorDetails = arrayErrors.joined(separator: "\n")
+            result(userPhoto, userPosts, userTodos, errorDetails)
         }
     }
     
-    func getAlbum(id: Int, result: @escaping (_ id: Int?, _ error: Error?) -> Void) {
+    private func getAlbum(id: Int, result: @escaping (_ photo: PhotoConfiguration?, _ error: Error?) -> Void) {
                 
-        JSONPlaceholderAPI.getUserFirstAlbum(id) { (albumResponseData, error) in
+        JSONPlaceholderAPI.getUserFirstAlbum(id) { [weak self] (albumResponseData, error) in
             
             if let error = error {
                 
                 result(nil, error)
             } else if let albumResponseData = albumResponseData {
     
-                result(albumResponseData.id, nil)
+                self?.getPhoto(id: albumResponseData.id) { (response) in
+                    
+                    switch response {
+                        
+                    case .success(data: let data):
+                        result(PhotoConfiguration(photo: data.photo), nil)
+                    case .failure(error: let error):
+                        result(nil, error)
+                    }
+                }
             }
         }
     }
     
-    func getPhoto(id: Int, result: @escaping SelectedUserWorkerCompletionHandler2) {
+    private func getPhoto(id: Int, result: @escaping SelectedUserWorkerCompletionHandler2) {
                 
         JSONPlaceholderAPI.getUserPhoto(id) { (photoResponseData, error) in
             
@@ -79,7 +127,22 @@ class SelectedUserWorker {
         }
     }
     
-    func getTodoList(id: Int, result: @escaping TodoListWorkerCompletionHandler) {
+    private func getPosts(id: Int, result: @escaping SelectedUserWorkerCompletionHandler) {
+                
+        JSONPlaceholderAPI.getUserPosts(id) { (postResponseData, error) in
+            
+            if let error = error {
+                
+                result(JSONPlaceholderAPIPostsResult.failure(error: error))
+            } else if let postResponseData = postResponseData {
+                
+                let bodies = postResponseData.map({ $0.body })
+                result(JSONPlaceholderAPIPostsResult.success(data: PostsConfiguration(bodies: bodies)))
+            }
+        }
+    }
+    
+    private func getTodoList(id: Int, result: @escaping TodoListWorkerCompletionHandler) {
                 
         JSONPlaceholderAPI.getUserTODOList(id) { (todoListResponseData, error) in
             

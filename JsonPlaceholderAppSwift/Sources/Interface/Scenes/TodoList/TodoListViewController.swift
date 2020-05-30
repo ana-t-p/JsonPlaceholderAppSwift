@@ -65,8 +65,7 @@ class TodoListViewController: UIViewController, TodoListDisplayLogic {
     // MARK: Methods
     private func setupView() {
         
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isHidden = true
         
         tableView.delegate = self
         tableView.dataSource = self

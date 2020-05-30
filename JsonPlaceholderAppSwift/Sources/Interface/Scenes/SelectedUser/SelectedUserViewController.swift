@@ -12,12 +12,8 @@ protocol SelectedUserDisplayLogic: class {
     
     func displayUserInformation(viewModel: SelectedUser.UserInformation.ViewModel)
     func displayUserInformationError(viewModel: SelectedUser.UserInformationError.ViewModel)
-    func displayUserPosts(viewModel: SelectedUser.UserPosts.ViewModel)
-    func displayUserPostsError(viewModel: SelectedUser.UserPostsError.ViewModel)
-    func displayUserPhoto(viewModel: SelectedUser.UserPhoto.ViewModel)
-    func displayUserPhotoError(viewModel: SelectedUser.UserPhotoError.ViewModel)
-    func displayUserTodoList(viewModel: SelectedUser.UserTodoList.ViewModel)
-    func displayUserTodoListError(viewModel: SelectedUser.UserTodoListError.ViewModel)
+    func displayUserDetails(viewModel: SelectedUser.UserDetails.ViewModel)
+    func displayUserDetailsError(viewModel: SelectedUser.UserDetailsError.ViewModel)
 }
 
 class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
@@ -71,8 +67,7 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
         
         setupView()
         trySetUserInformation()
-        tryGetUserPhoto()
-        tryGetUserPosts()
+        tryGetUserDetails()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -104,7 +99,7 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
     // MARK: Actions
     @IBAction func todoButtonAction(_ sender: Any) {
         
-        tryGetUserTodoList()
+        prepareForUserTodoList()
     }
 }
 
@@ -135,22 +130,10 @@ extension SelectedUserViewController {
         interactor?.doSetUserInformation(request: request)
     }
     
-    private func tryGetUserPhoto() {
+    private func tryGetUserDetails() {
         
-        let request = SelectedUser.UserPhoto.Request()
-        interactor?.doGetUserPhoto(request: request)
-    }
-    
-    private func tryGetUserPosts() {
-        
-        let request = SelectedUser.UserPosts.Request()
-        interactor?.doGetUserPosts(request: request)
-    }
-    
-    private func tryGetUserTodoList() {
-        
-        let request = SelectedUser.UserTodoList.Request()
-        interactor?.doGetUserTodoList(request: request)
+        let request = SelectedUser.UserDetails.Request()
+        interactor?.doGetUserDetails(request: request)
     }
 }
 
@@ -169,42 +152,31 @@ extension SelectedUserViewController {
         ErrorPopup.showErrorPopup(viewModel.error, vc: self)
     }
     
-    func displayUserPhoto(viewModel: SelectedUser.UserPhoto.ViewModel) {
+    func displayUserDetails(viewModel: SelectedUser.UserDetails.ViewModel) {
         
-        imageView.image = viewModel.photo
-    }
-    
-    func displayUserPhotoError(viewModel: SelectedUser.UserPhotoError.ViewModel) {
+        if let photo = viewModel.photo {
+            
+            imageView.image = photo
+        }
         
-        ErrorPopup.showErrorPopup(viewModel.error, vc: self)
-    }
-    
-    
-    func displayUserPosts(viewModel: SelectedUser.UserPosts.ViewModel) {
-        
-        posts = viewModel.posts
-        ui { [weak self] in
-            self?.activityIndicator.stopAnimating()
-            self?.collectionView.isHidden = false
-            self?.collectionView.reloadData()
+        if let userPosts = viewModel.posts, !userPosts.isEmpty {
+            
+            posts = userPosts
+            ui { [weak self] in
+                self?.activityIndicator.stopAnimating()
+                self?.collectionView.isHidden = false
+                self?.collectionView.reloadData()
+            }
+        } else {
+                
+            ui { [weak self] in
+                self?.activityIndicator.stopAnimating()
+                self?.collectionHolder.isHidden = true
+            }
         }
     }
     
-    func displayUserPostsError(viewModel: SelectedUser.UserPostsError.ViewModel) {
-        
-        ui { [weak self] in
-            self?.activityIndicator.stopAnimating()
-            self?.collectionHolder.isHidden = true
-        }
-        ErrorPopup.showErrorPopup(viewModel.error, vc: self)
-    }
-    
-    func displayUserTodoList(viewModel: SelectedUser.UserTodoList.ViewModel) {
-        
-        prepareForUserTodoList()
-    }
-    
-    func displayUserTodoListError(viewModel: SelectedUser.UserTodoListError.ViewModel) {
+    func displayUserDetailsError(viewModel: SelectedUser.UserDetailsError.ViewModel) {
         
         ErrorPopup.showErrorPopup(viewModel.error, vc: self)
     }
