@@ -120,9 +120,31 @@ class JSONPlaceholderAPI {
         }.resume()
     }
     
-    class func getUserTODOList() {
+    class func getUserTODOList(_ id: Int, completionHandler: @escaping ([TodosResponseData]?, Error?) -> Void) {
         
+        guard let url = URL(string: Constants.Urls.jsonPHUrl + Constants.Urls.todos + "\(id)") else {
+            
+            completionHandler(nil, ErrorCases.usedURL)
+            return
+        }
         
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            ui {
+                
+                if let data = data {
+                    
+                    guard let decodedResponse = decodeJSONDictionaryTodosResponseValues(data) else {
+                        
+                        return completionHandler(nil, ErrorCases.decoding)
+                    }
+                    completionHandler(decodedResponse, nil)
+                } else if let error = error {
+                    
+                    completionHandler(nil, error)
+                }
+            }
+        }.resume()
     }
     
     // MARK: Private
@@ -176,5 +198,18 @@ class JSONPlaceholderAPI {
             print("Error: \(error.localizedDescription)\n")
         }
         return postsResponseData
+    }
+    
+    private class func decodeJSONDictionaryTodosResponseValues(_ data: Data) -> [TodosResponseData]? {
+        
+        var todosResponseData: [TodosResponseData]?
+        do {
+
+            todosResponseData = try JSONDecoder().decode([TodosResponseData].self, from: data)
+        } catch {
+            
+            print("Error: \(error.localizedDescription)\n")
+        }
+        return todosResponseData
     }
 }
