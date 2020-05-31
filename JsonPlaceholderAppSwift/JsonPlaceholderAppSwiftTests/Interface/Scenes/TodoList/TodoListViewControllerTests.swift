@@ -47,6 +47,7 @@ class TodoListViewControllerTests: XCTestCase {
     class TodoListBusinessLogicSpy: TodoListBusinessLogic {
         
         var doSetUserTodoListCalled = false
+        
         func doSetUserTodoList(request: TodoList.UserTodoList.Request) {
             
             doSetUserTodoListCalled = true
@@ -69,6 +70,22 @@ class TodoListViewControllerTests: XCTestCase {
         
         // Then
         XCTAssertNil(nc.presentedViewController)
+    }
+    
+    func testNumberOfRowsInSection() {
+        
+        // Given
+        let spy = TodoListBusinessLogicSpy()
+        sut.interactor = spy
+        loadView()
+        sut.todos = [SingleTodo(done: true, text: "FakeTODO")]
+        
+        // When
+        let numRows = sut.tableView(sut.tableView, numberOfRowsInSection: 0)
+        waitUI()
+        
+        // Then
+        XCTAssertEqual(numRows, sut.todos.count)
     }
     
     func testCellForRowAt() {
@@ -95,6 +112,37 @@ class TodoListViewControllerTests: XCTestCase {
         // Then
         XCTAssertFalse(cell?.switcher.isOn ?? true)
         XCTAssertTrue(cell?.todoLabel.text?.isEmpty ?? false)
+    }
+    
+    func testHeightForRowAt() {
+        
+        // Given
+        let spy = TodoListBusinessLogicSpy()
+        sut.interactor = spy
+        loadView()
+        
+        // When
+        let height = sut.tableView(sut.tableView, heightForRowAt: IndexPath(row: 0, section: 0))
+        waitUI()
 
+        // Then
+        XCTAssertEqual(height, UITableView.automaticDimension)
+    }
+    
+    func testDisplayUserTodoListError() {
+        
+        // Given
+        let spy = TodoListBusinessLogicSpy()
+        sut.interactor = spy
+        loadView()
+        
+        // When
+        let viewModel = TodoList.UserTodoListError.ViewModel(error: "FakeError")
+        sut.displayUserTodoListError(viewModel: viewModel)
+        waitUI()
+        
+        // Then
+        XCTAssertNotNil(sut.presentedViewController)
+        XCTAssertTrue(sut.presentedViewController is UIAlertController)
     }
 }

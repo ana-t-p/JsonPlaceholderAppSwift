@@ -145,7 +145,6 @@ class SelectedUserViewControllerTests: XCTestCase {
         let spy = SelectedUserBusinessLogicSpy()
         sut.interactor = spy
         loadView()
-        sut.posts = ["FakePost1", "FakePost2"]
         
         // When
         let viewModel = SelectedUser.UserInformationError.ViewModel(error: "FakeError")
@@ -191,7 +190,6 @@ class SelectedUserViewControllerTests: XCTestCase {
         let spy = SelectedUserBusinessLogicSpy()
         sut.interactor = spy
         loadView()
-        sut.posts = ["FakePost1", "FakePost2"]
         
         // When
         let viewModel = SelectedUser.UserDetailsError.ViewModel(error: "FakeError")

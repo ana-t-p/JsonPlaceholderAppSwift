@@ -32,18 +32,6 @@ class HomeWorkerTests: XCTestCase {
         sut = HomeWorker()
     }
     
-    // MARK: Test doubles
-    class JSONPlaceholderAPISpy: JSONPlaceholderAPI {
-        
-        override class func getUsers(completionHandler: @escaping ([UserResponseData]?, Error?) -> Void) {
-                        
-            let geo = Geo(lat: "", lng: "")
-            let address = Address(street: "", suite: "", city: "", zipcode: "", geo: geo)
-            let userResponseData = UserResponseData(id: 1, name: "FakeName", username: "FakeSurname", email: "FakeEmail", phone: "123456789", website: "FakeWebsite", address: address)
-            completionHandler([userResponseData], nil)
-        }
-     }
-    
     // MARK: Tests
     func testGetUserList() {
         

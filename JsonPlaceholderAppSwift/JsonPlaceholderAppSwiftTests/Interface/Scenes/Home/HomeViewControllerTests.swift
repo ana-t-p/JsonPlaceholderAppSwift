@@ -71,7 +71,7 @@ class HomeViewControllerTests: XCTestCase {
     }
     
     // MARK: Tests
-    func testEnableButton() {
+    func testPushedButton() {
         
         // Given
         let spy = HomeBusinessLogicSpy()
@@ -83,6 +83,20 @@ class HomeViewControllerTests: XCTestCase {
         
         // Then
         XCTAssertTrue(spy.doGoToSelectedUserCalled)
+    }
+    
+    func testNumberOfComponents() {
+        
+        // Given
+        let spy = HomeBusinessLogicSpy()
+        sut.interactor = spy
+        loadView()
+        
+        // When
+        let num = sut.numberOfComponents(in: sut.pickerView)
+        
+        // Then
+        XCTAssertEqual(num, 1)
     }
     
     func testDidSelectRow() {

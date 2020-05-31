@@ -115,5 +115,11 @@ class SelectedUserInteractorTests: XCTestCase {
         // Then
         XCTAssertTrue(spy.presentUserDetailsCalled)
         
+        // When
+        sut.selectedUser = nil
+        sut.doGetUserDetails(request: request)
+        
+        // Then
+        XCTAssertTrue(spy.presentUserDetailsErrorCalled)
     }
 }
