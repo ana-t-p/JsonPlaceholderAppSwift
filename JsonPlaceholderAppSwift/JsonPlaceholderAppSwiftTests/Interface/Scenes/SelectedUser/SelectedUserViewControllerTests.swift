@@ -112,6 +112,13 @@ class SelectedUserViewControllerTests: XCTestCase {
         
         // Then
         XCTAssertEqual(cell?.postLabel.text, sut.posts?.first)
+        
+        // When
+        cell?.prepareForReuse()
+        
+        // Then
+        XCTAssertTrue(cell?.postLabel.text?.isEmpty ?? false)
+
     }
     
     func testDisplayUserInformation() {
