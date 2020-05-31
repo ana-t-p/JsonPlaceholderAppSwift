@@ -18,21 +18,24 @@ I have used one picker, one collection and one table to display the written data
 
 
 ## Things to improve
-Maybe the first thing to improve would be the networking issue. Now it is not controlling if a call is done and the user leaves the screen and again tries to make a new call. In the past I have used other frameworks to control things like that.
+Maybe the first thing to improve would be the **networking** issue. Now it is not controlling if a call is done and the user leaves the screen and again tries to make a new call. In the past I have used other frameworks to control things like that.
 
-The cells from the table do not adjust their height based on the content, as well as the collection ones. Maybe if the views were made by code instead of *Storyboards* it wouldn't be similar issues, but I thought this was the fastest (and visual) option to implement.
+The cells from the table do not **adjust** their height based on the content, as well as the collection ones. Maybe if the views were made by code instead of *Storyboards* it wouldn't be similar issues, but I thought this was the fastest (and visual) option to implement.
 
-The app can be localisabled. All the texts are displayed by using keys, so it would be possible to add new languages for the app.
+The app can be **localisabled**. All the texts are displayed by using keys, so it would be possible to add new languages for the app.
 
-Maybe some animations would be nice.
+Maybe some **animations** would be nice.
 
-The way to show errors is a little invasive, I think. Maybe a snackbar at the bottom of the screen would be better.
+The way to **show errors** is a little invasive, I think. Maybe a *snackbar* at the bottom of the screen would be better.
 
 ## Running
 Just open the .xcproject file and run it in a simulator. No need to install pods.
+
+## Usage
+The first scene shows a picker which lets you to select one person. Then, if you push the button below, it will navigate to the second scene, which displays an image, personal information (name, surnames, email, telephone) and a post collection of the user. Also a button will be unhidden if the user has a TODO list. If you push this button, it will appear a table (third scene) with the list. 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Authors
-Ana Tirado Pro
+© 2020 Ana Tirado Pro
