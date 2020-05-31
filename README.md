@@ -1,5 +1,5 @@
 # JsonPlaceholderAppSwift
-JsonPlaceholderAppSwift is a small mobile iOS app in Swift 5 that consumes a REST API service from Fake API, offered by [jsonplaceholder](https://jsonplaceholder.typicode.com/), and displays it on the UI.
+JsonPlaceholderAppSwift is a small mobile **iOS app** in Swift 5 that consumes a REST API service from Fake API, offered by [jsonplaceholder](https://jsonplaceholder.typicode.com/), and displays it on the UI.
 
 ## About the implementation
 ### Structure
@@ -29,7 +29,7 @@ Maybe some **animations** would be nice.
 The way to **show errors** is a little invasive, I think. Maybe a *snackbar* at the bottom of the screen would be better.
 
 ## Running
-Just open the .xcproject file and run it in a simulator. No need to install pods.
+Just open the *.xcproject* file and run it in a simulator. No need to install *pods*.
 
 ## Usage
 The first scene shows a picker which lets you to select one person. Then, if you push the button below, it will navigate to the second scene, which displays an image, personal information (name, surnames, email, telephone) and a post collection of the user. Also a button will be unhidden if the user has a TODO list. If you push this button, it will appear a table (third scene) with the list. 
@@ -38,4 +38,4 @@ The first scene shows a picker which lets you to select one person. Then, if you
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Authors
-© 2020 Ana Tirado Pro
+© 2020 Ana Tirado Pro.

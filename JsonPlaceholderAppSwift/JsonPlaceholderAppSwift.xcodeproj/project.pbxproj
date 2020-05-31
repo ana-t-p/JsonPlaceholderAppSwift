@@ -175,7 +175,7 @@
 		D83A7027248020AD001ED298 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D83A704A24802208001ED298 /* Infraestructure */,
+				D83A704A24802208001ED298 /* Infrastructure */,
 				D83A704B2480222F001ED298 /* Interface */,
 			);
 			path = Sources;
@@ -184,7 +184,7 @@
 		D83A703E248020AE001ED298 /* JsonPlaceholderAppSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				D87E93402483FE3500191DA0 /* Infraestructure */,
+				D87E93402483FE3500191DA0 /* Infrastructure */,
 				D87E933F2483FE2500191DA0 /* Interface */,
 				D83A703F248020AE001ED298 /* XCTestExtension.swift */,
 				D83A7041248020AE001ED298 /* Info.plist */,
@@ -192,7 +192,7 @@
 			path = JsonPlaceholderAppSwiftTests;
 			sourceTree = "<group>";
 		};
-		D83A704A24802208001ED298 /* Infraestructure */ = {
+		D83A704A24802208001ED298 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
 				D83A70742480862B001ED298 /* Extensions */,
@@ -202,7 +202,7 @@
 				D83A704F24802357001ED298 /* Services */,
 				D83A70502480236C001ED298 /* Utils */,
 			);
-			path = Infraestructure;
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		D83A704B2480222F001ED298 /* Interface */ = {
@@ -357,12 +357,12 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
-		D87E93402483FE3500191DA0 /* Infraestructure */ = {
+		D87E93402483FE3500191DA0 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
 				D87E93412483FE4000191DA0 /* Extensions */,
 			);
-			path = Infraestructure;
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		D87E93412483FE4000191DA0 /* Extensions */ = {
