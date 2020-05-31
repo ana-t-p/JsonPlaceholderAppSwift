@@ -22,14 +22,13 @@ protocol HomeDataStore {
 class HomeInteractor: HomeBusinessLogic, HomeDataStore {
     
     var presenter: HomePresentationLogic?
-    var worker: HomeWorker?
+    var worker: HomeWorker? = HomeWorker()
     var selectedUser: ChoosenUser?
     var users: [ChoosenUser]?
 
     // MARK: Methods
     func doGetUserList() {
         
-        worker = HomeWorker()
         worker?.getUserList(result: { [weak self] (responseFromWorker) in
             
             switch responseFromWorker {

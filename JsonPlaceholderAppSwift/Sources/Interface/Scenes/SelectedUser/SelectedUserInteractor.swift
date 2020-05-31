@@ -24,7 +24,7 @@ protocol SelectedUserDataStore {
 class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
 
     var presenter: SelectedUserPresentationLogic?
-    var worker: SelectedUserWorker?
+    var worker: SelectedUserWorker? = SelectedUserWorker()
     var selectedUser: ChoosenUser?
     var name: String?
     var todoList: [SingleTodo]?
@@ -48,7 +48,6 @@ class SelectedUserInteractor: SelectedUserBusinessLogic, SelectedUserDataStore {
         
         if let selectedUser = selectedUser {
 
-            worker = SelectedUserWorker()
             worker?.getSelectedUserDetails(selectedUser.id, result: { [weak self] (photo, posts, todoList, errorDetails) in
                 
                 self?.todoList = todoList?.todoList
