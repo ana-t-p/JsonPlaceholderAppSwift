@@ -37,6 +37,10 @@
 		D864FE922481736D0008E30E /* PostsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D864FE902481736D0008E30E /* PostsCollectionViewCell.xib */; };
 		D864FE932481736D0008E30E /* PostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864FE912481736D0008E30E /* PostsCollectionViewCell.swift */; };
 		D864FE952481C5CD0008E30E /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864FE942481C5CD0008E30E /* UIImageViewExtension.swift */; };
+		D87E93322483E1E900191DA0 /* SelectedUserViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87E932E2483E1E900191DA0 /* SelectedUserViewControllerTests.swift */; };
+		D87E93332483E1E900191DA0 /* SelectedUserInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87E932F2483E1E900191DA0 /* SelectedUserInteractorTests.swift */; };
+		D87E93342483E1E900191DA0 /* SelectedUserWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87E93302483E1E900191DA0 /* SelectedUserWorkerTests.swift */; };
+		D87E93352483E1E900191DA0 /* SelectedUserPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87E93312483E1E900191DA0 /* SelectedUserPresenterTests.swift */; };
 		D8B4EF012482A72F008E3C82 /* TodoListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EEFB2482A72F008E3C82 /* TodoListPresenter.swift */; };
 		D8B4EF022482A72F008E3C82 /* TodoListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EEFC2482A72F008E3C82 /* TodoListWorker.swift */; };
 		D8B4EF032482A72F008E3C82 /* TodoListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EEFD2482A72F008E3C82 /* TodoListRouter.swift */; };
@@ -99,6 +103,10 @@
 		D864FE902481736D0008E30E /* PostsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostsCollectionViewCell.xib; sourceTree = "<group>"; };
 		D864FE912481736D0008E30E /* PostsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCollectionViewCell.swift; sourceTree = "<group>"; };
 		D864FE942481C5CD0008E30E /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		D87E932E2483E1E900191DA0 /* SelectedUserViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserViewControllerTests.swift; sourceTree = "<group>"; };
+		D87E932F2483E1E900191DA0 /* SelectedUserInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserInteractorTests.swift; sourceTree = "<group>"; };
+		D87E93302483E1E900191DA0 /* SelectedUserWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserWorkerTests.swift; sourceTree = "<group>"; };
+		D87E93312483E1E900191DA0 /* SelectedUserPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserPresenterTests.swift; sourceTree = "<group>"; };
 		D8B4EEFB2482A72F008E3C82 /* TodoListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListPresenter.swift; sourceTree = "<group>"; };
 		D8B4EEFC2482A72F008E3C82 /* TodoListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListWorker.swift; sourceTree = "<group>"; };
 		D8B4EEFD2482A72F008E3C82 /* TodoListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRouter.swift; sourceTree = "<group>"; };
@@ -306,6 +314,17 @@
 			path = "cell view";
 			sourceTree = "<group>";
 		};
+		D87E932D2483E1D400191DA0 /* SelectedUser */ = {
+			isa = PBXGroup;
+			children = (
+				D87E932E2483E1E900191DA0 /* SelectedUserViewControllerTests.swift */,
+				D87E932F2483E1E900191DA0 /* SelectedUserInteractorTests.swift */,
+				D87E93302483E1E900191DA0 /* SelectedUserWorkerTests.swift */,
+				D87E93312483E1E900191DA0 /* SelectedUserPresenterTests.swift */,
+			);
+			path = SelectedUser;
+			sourceTree = "<group>";
+		};
 		D8B4EEFA2482A6FE008E3C82 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +352,7 @@
 		D8B4EF132483418E008E3C82 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D87E932D2483E1D400191DA0 /* SelectedUser */,
 				D8B4EF142483419D008E3C82 /* Home */,
 			);
 			path = Scenes;
@@ -496,8 +516,12 @@
 			files = (
 				D8B4EF1A248341B7008E3C82 /* HomeInteractorTests.swift in Sources */,
 				D83A7040248020AE001ED298 /* XCTestExtension.swift in Sources */,
+				D87E93322483E1E900191DA0 /* SelectedUserViewControllerTests.swift in Sources */,
 				D8B4EF1B248341B7008E3C82 /* HomeWorkerTests.swift in Sources */,
 				D8B4EF1C248341B7008E3C82 /* HomePresenterTests.swift in Sources */,
+				D87E93342483E1E900191DA0 /* SelectedUserWorkerTests.swift in Sources */,
+				D87E93332483E1E900191DA0 /* SelectedUserInteractorTests.swift in Sources */,
+				D87E93352483E1E900191DA0 /* SelectedUserPresenterTests.swift in Sources */,
 				D8B4EF19248341B7008E3C82 /* HomeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

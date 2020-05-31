@@ -35,8 +35,6 @@ class HomeWorkerTests: XCTestCase {
     // MARK: Test doubles
     class JSONPlaceholderAPISpy: JSONPlaceholderAPI {
         
-        var errorOcurred = false
-
         override class func getUsers(completionHandler: @escaping ([UserResponseData]?, Error?) -> Void) {
                         
             let geo = Geo(lat: "", lng: "")
@@ -48,10 +46,6 @@ class HomeWorkerTests: XCTestCase {
     
     // MARK: Tests
     func testGetUserList() {
-        
-        // Given
-        let workerSpy = JSONPlaceholderAPISpy()
-        workerSpy.errorOcurred = false
         
         // When
         sut.getUserList { (responseFromWorker) in

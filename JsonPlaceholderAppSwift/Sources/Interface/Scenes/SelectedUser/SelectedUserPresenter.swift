@@ -44,7 +44,7 @@ class SelectedUserPresenter: SelectedUserPresentationLogic {
     
     func presentUserDetailsError(response: SelectedUser.UserDetailsError.Response) {
         
-        let viewModel = SelectedUser.UserInformationError.ViewModel(error: response.error)
-        viewController?.displayUserInformationError(viewModel: viewModel)
+        let viewModel = SelectedUser.UserDetailsError.ViewModel(error: response.error)
+        viewController?.displayUserDetailsError(viewModel: viewModel)
     }
 }
