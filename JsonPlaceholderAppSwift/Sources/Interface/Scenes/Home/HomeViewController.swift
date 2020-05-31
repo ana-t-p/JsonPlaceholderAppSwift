@@ -76,11 +76,16 @@ class HomeViewController: UIViewController, HomeDisplayLogic {
     // MARK: Methods
     private func showLoading() {
         
-        subtitleLabel.isHidden = true
-        pickerView.isHidden = true
-        nextButton.isHidden = true
+        thereAreUsers(false)
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
+    }
+    
+    private func thereAreUsers(_ existence: Bool) {
+        
+        subtitleLabel.isHidden = !existence
+        pickerView.isHidden = !existence
+        nextButton.isHidden = !existence
     }
     
     private func enableButton(_ enable: Bool) {
@@ -145,10 +150,8 @@ extension HomeViewController {
         names.append(contentsOf: viewModel.names)
         ui { [weak self] in
             self?.activityIndicator.stopAnimating()
-            self?.subtitleLabel.isHidden = false
-            self?.pickerView.isHidden = false
+            self?.thereAreUsers(true)
             self?.pickerView.reloadAllComponents()
-            self?.nextButton.isHidden = false
             self?.enableButton(false)
         }
     }
@@ -158,7 +161,10 @@ extension HomeViewController {
         ui { [weak self] in
             self?.activityIndicator.stopAnimating()
         }
-        ErrorPopup.showErrorPopup(viewModel.error, vc: self)
+        ErrorPopup.showErrorPopup(viewModel.error, vc: self, tryAgain: true, completionHandler: { [weak self] in
+            
+            self?.tryGetUserList()
+        })
     }
     
     func displaySelectedUser(viewModel: Home.SelectedUserResults.ViewModel) {

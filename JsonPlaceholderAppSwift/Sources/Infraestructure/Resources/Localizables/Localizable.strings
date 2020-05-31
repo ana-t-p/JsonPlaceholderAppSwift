@@ -28,8 +28,9 @@
 //-------------------------------------------------//
 //                      ERRORS                     //
 //-------------------------------------------------//
-"error.title" = "ERROR!";
-"error.button" = "Ok :(";
+"popuperror.title" = "ERROR!";
+"popuperror.button.ok" = "Ok :(";
+"popuperror.button.tryagain" = "Try again :)";
 "error.usedURL" = "Some error ocurred when try to access to the url.";
 "error.unknown" = "We do not know what happened!";
 "error.apiCalling" = "Some error ocurred when calling to API.";
