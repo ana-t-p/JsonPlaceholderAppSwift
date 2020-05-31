@@ -12,6 +12,11 @@ class PostsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var postLabel: UILabel!
     
+    static var nibName: String {
+        
+        return String(describing: self)
+    }
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()

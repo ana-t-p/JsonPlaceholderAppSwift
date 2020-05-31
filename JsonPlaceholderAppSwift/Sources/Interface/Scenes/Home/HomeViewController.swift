@@ -64,7 +64,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic {
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Select neighbour", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "selecteduser.back.button".localized, style: .plain, target: nil, action: nil)
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -87,7 +87,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic {
         
         nextButton.isUserInteractionEnabled = enable
         nextButton.isEnabled = enable
-        nextButton.alpha = enable == true ? 0.9 : 0.1
+        nextButton.alpha = enable == true ? 1 : 0.1
     }
     
     // MARK: Actions

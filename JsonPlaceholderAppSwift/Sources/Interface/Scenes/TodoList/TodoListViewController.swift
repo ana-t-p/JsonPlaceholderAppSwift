@@ -69,9 +69,9 @@ class TodoListViewController: UIViewController, TodoListDisplayLogic {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(TodoListTableViewCell.self, forCellReuseIdentifier: "todoListTableViewCell")
-        tableView.register(UINib(nibName: "TodoListTableViewCell", bundle: .main), forCellReuseIdentifier: "todoListTableViewCell")
-        tableView.estimatedRowHeight = 50.0
+        tableView.register(TodoListTableViewCell.self, forCellReuseIdentifier: Constants.Cells.table)
+        tableView.register(UINib(nibName: TodoListTableViewCell.nibName, bundle: .main), forCellReuseIdentifier: Constants.Cells.table)
+        tableView.estimatedRowHeight = Constants.Cells.estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
     }
     
@@ -92,7 +92,7 @@ extension TodoListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "todoListTableViewCell", for: indexPath) as? TodoListTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.table, for: indexPath) as? TodoListTableViewCell else {
             
             return UITableViewCell()
         }

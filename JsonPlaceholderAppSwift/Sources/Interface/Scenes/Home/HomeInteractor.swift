@@ -48,7 +48,7 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore {
                     self?.presenter?.presentGetUserList(response: response)
                 } else {
                     
-                    let response = Home.UsersResultsError.Response(error: ErrorCases.apiCalling.localizedDescription)
+                    let response = Home.UsersResultsError.Response(error: ErrorCases.unknown.localizedDescription)
                     self?.presenter?.presentGetUserListError(response: response)
                 }
             case .failure(error: let error):

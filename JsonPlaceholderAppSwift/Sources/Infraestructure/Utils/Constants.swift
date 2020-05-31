@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     
@@ -18,5 +19,12 @@ struct Constants {
         static let albums = "/albums?userId="
         static let photos = "/photos?albumId="
         static let todos = "/todos?userId="
+    }
+    
+    struct Cells {
+        
+        static let collection = "postsCollectionViewCell"
+        static let table = "todoListTableViewCell"
+        static let estimatedRowHeight: CGFloat = 50.0
     }
 }

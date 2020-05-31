@@ -91,17 +91,20 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EPX-Fn-D1I" userLabel="Collection">
                                                 <rect key="frame" x="0.0" y="561" width="414" height="259.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some posts" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flJ-Ou-GZJ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flJ-Ou-GZJ" customClass="LocalizableLabel" customModule="JsonPlaceholderAppSwift" customModuleProvider="target">
                                                         <rect key="frame" x="21" y="25" width="376" height="96.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="selecteduser.posts.title"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Qei-5J-sTa">
                                                         <rect key="frame" x="188.5" y="177" width="37" height="37"/>
                                                         <color key="color" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </activityIndicatorView>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eUs-qV-8RW">
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eUs-qV-8RW">
                                                         <rect key="frame" x="21" y="131.5" width="372" height="128"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -131,7 +134,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFe-Oo-7l6" userLabel="Button View">
                                                 <rect key="frame" x="0.0" y="845.5" width="414" height="110"/>
                                                 <subviews>
-                                                    <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgy-MA-sW2">
+                                                    <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgy-MA-sW2" customClass="LocalizableButton" customModule="JsonPlaceholderAppSwift" customModuleProvider="target">
                                                         <rect key="frame" x="30" y="30" width="354" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -139,12 +142,13 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="TODO list" image="pencil" catalog="system"/>
+                                                        <state key="normal" image="pencil" catalog="system"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="25"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="selecteduser.todolist.button"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="todoButtonAction:" destination="Geu-Y7-Q6F" eventType="touchUpInside" id="B99-Pf-CaP"/>

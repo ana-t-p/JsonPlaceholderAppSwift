@@ -80,8 +80,8 @@ class SelectedUserViewController: UIViewController, SelectedUserDisplayLogic {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(PostsCollectionViewCell.self, forCellWithReuseIdentifier: "postsCollectionViewCell")
-        collectionView.register(UINib(nibName: "PostsCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "postsCollectionViewCell")
+        collectionView.register(PostsCollectionViewCell.self, forCellWithReuseIdentifier: Constants.Cells.collection)
+        collectionView.register(UINib(nibName: PostsCollectionViewCell.nibName, bundle: .main), forCellWithReuseIdentifier: Constants.Cells.collection)
         
         showLoading()
     }
@@ -123,7 +123,7 @@ extension SelectedUserViewController: UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as? PostsCollectionViewCell,
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.collection, for: indexPath) as? PostsCollectionViewCell,
               let posts = posts else { return UICollectionViewCell ()}
         
         cell.setPost(posts[indexPath.row])

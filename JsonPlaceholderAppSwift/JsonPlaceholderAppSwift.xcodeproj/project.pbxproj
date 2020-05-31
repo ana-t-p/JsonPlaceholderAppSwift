@@ -46,6 +46,8 @@
 		D8B4EF082482A871008E3C82 /* TodoList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8B4EF072482A871008E3C82 /* TodoList.storyboard */; };
 		D8B4EF0C2482B201008E3C82 /* TodoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EF0A2482B201008E3C82 /* TodoListTableViewCell.swift */; };
 		D8B4EF0D2482B201008E3C82 /* TodoListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B4EF0B2482B201008E3C82 /* TodoListTableViewCell.xib */; };
+		D8B4EF0F24832CF0008E3C82 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EF0E24832CF0008E3C82 /* UILabelExtension.swift */; };
+		D8B4EF1224832EA7008E3C82 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EF1124832EA7008E3C82 /* UIButtonExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		D8B4EF072482A871008E3C82 /* TodoList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoList.storyboard; sourceTree = "<group>"; };
 		D8B4EF0A2482B201008E3C82 /* TodoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewCell.swift; sourceTree = "<group>"; };
 		D8B4EF0B2482B201008E3C82 /* TodoListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoListTableViewCell.xib; sourceTree = "<group>"; };
+		D8B4EF0E24832CF0008E3C82 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		D8B4EF1124832EA7008E3C82 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +274,8 @@
 				D83A707524808643001ED298 /* LocalizedErrorExtension.swift */,
 				D83A70772480872B001ED298 /* StringExtension.swift */,
 				D864FE942481C5CD0008E30E /* UIImageViewExtension.swift */,
+				D8B4EF0E24832CF0008E3C82 /* UILabelExtension.swift */,
+				D8B4EF1124832EA7008E3C82 /* UIButtonExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 				D83A706E24807BC5001ED298 /* SelectedUserModels.swift in Sources */,
 				D83A7029248020AD001ED298 /* AppDelegate.swift in Sources */,
 				D8B4EF052482A72F008E3C82 /* TodoListViewController.swift in Sources */,
+				D8B4EF1224832EA7008E3C82 /* UIButtonExtension.swift in Sources */,
 				D8B4EF022482A72F008E3C82 /* TodoListWorker.swift in Sources */,
 				D83A706124804DAE001ED298 /* HomeInteractor.swift in Sources */,
 				D83A705E24804DAE001ED298 /* HomeRouter.swift in Sources */,
@@ -449,6 +456,7 @@
 				D83A702B248020AD001ED298 /* SceneDelegate.swift in Sources */,
 				D8B4EF032482A72F008E3C82 /* TodoListRouter.swift in Sources */,
 				D83A70782480872B001ED298 /* StringExtension.swift in Sources */,
+				D8B4EF0F24832CF0008E3C82 /* UILabelExtension.swift in Sources */,
 				D83A706B24807BC5001ED298 /* SelectedUserPresenter.swift in Sources */,
 				D83A706F24807BC5001ED298 /* SelectedUserViewController.swift in Sources */,
 			);

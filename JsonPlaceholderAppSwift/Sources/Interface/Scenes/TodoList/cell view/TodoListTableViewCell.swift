@@ -12,6 +12,11 @@ class TodoListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var switcher: UISwitch!
     @IBOutlet weak var todoLabel: UILabel!
+    
+    static var nibName: String {
+        
+        return String(describing: self)
+    }
 
     override func awakeFromNib() {
         
@@ -22,8 +27,7 @@ class TodoListTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         
         super.setSelected(selected, animated: animated)
-
-        self.selectionStyle = .none
+        selectionStyle = .none
     }
     
     override func prepareForReuse() {

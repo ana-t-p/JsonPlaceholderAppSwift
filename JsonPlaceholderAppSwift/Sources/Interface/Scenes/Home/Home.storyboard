@@ -21,7 +21,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gES-Pa-BZm" userLabel="Title View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMUNITY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vd4-9W-4qi" userLabel="Title">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMUNITY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vd4-9W-4qi" userLabel="Title" customClass="LocalizableLabel" customModule="JsonPlaceholderAppSwift" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="16" width="382" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="qGX-g8-qEO"/>
@@ -29,8 +29,11 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="home.title"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know your neighbour!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJF-TK-5kO" userLabel="Subtitle">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJF-TK-5kO" userLabel="Subtitle" customClass="LocalizableLabel" customModule="JsonPlaceholderAppSwift" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="62" width="382" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="uTa-IS-qOL"/>
@@ -38,6 +41,9 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="home.subtitle"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,11 +116,23 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsM-eY-AqN" customClass="LocalizableLabel" customModule="JsonPlaceholderAppSwift" customModuleProvider="target">
+                                <rect key="frame" x="17" y="748" width="380" height="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="home.createdby"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WPs-3k-AX5" firstAttribute="centerY" secondItem="RRb-sA-Sfo" secondAttribute="centerY" id="5Ey-4b-5Bb"/>
+                            <constraint firstItem="aH5-KF-lGH" firstAttribute="bottom" secondItem="rsM-eY-AqN" secondAttribute="bottom" constant="10" id="SRw-ap-aH7"/>
                             <constraint firstItem="WPs-3k-AX5" firstAttribute="width" secondItem="aH5-KF-lGH" secondAttribute="width" id="XLP-YX-zQB"/>
+                            <constraint firstItem="rsM-eY-AqN" firstAttribute="leading" secondItem="aH5-KF-lGH" secondAttribute="leading" constant="17" id="kiO-fs-brX"/>
+                            <constraint firstItem="aH5-KF-lGH" firstAttribute="trailing" secondItem="rsM-eY-AqN" secondAttribute="trailing" constant="17" id="pYc-Qo-P60"/>
                             <constraint firstItem="WPs-3k-AX5" firstAttribute="centerX" secondItem="RRb-sA-Sfo" secondAttribute="centerX" id="x1k-Wq-bSo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aH5-KF-lGH"/>

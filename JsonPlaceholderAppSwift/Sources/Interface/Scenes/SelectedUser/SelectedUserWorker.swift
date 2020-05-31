@@ -32,7 +32,7 @@ class SelectedUserWorker {
         var userPhoto: PhotoConfiguration?
         var userPosts: PostsConfiguration?
         var userTodos: TodoListConfiguration?
-        var errors = [Error]()
+        var errors = [String]()
         var errorDetails = ""
         let group = DispatchGroup()
         
@@ -44,7 +44,7 @@ class SelectedUserWorker {
                 userPhoto = photo
             } else if let error = error {
                 
-                errors.append(error)
+                errors.append("\("error.type.photo".localized)\(error.localizedDescription)")
             }
             group.leave()
         }
@@ -56,7 +56,7 @@ class SelectedUserWorker {
             case .success(data: let data):
                 userPosts = PostsConfiguration(bodies: data.bodies)
             case .failure(error: let error):
-                errors.append(error)
+                errors.append("\("error.type.posts".localized)\(error.localizedDescription)")
             }
             group.leave()
         }
@@ -68,19 +68,19 @@ class SelectedUserWorker {
             case .success(data: let data):
                 userTodos = TodoListConfiguration(todoList: data.todoList)
             case .failure(error: let error):
-                errors.append(error)
+                errors.append("\("error.type.todolist".localized)\(error.localizedDescription)")
             }
             group.leave()
         }
         
         group.notify(queue: .main) {
             
-            let arrayErrors = errors.map({ $0.localizedDescription })
-            errorDetails = arrayErrors.joined(separator: "\n")
+            errorDetails = errors.joined(separator: "\n")
             result(userPhoto, userPosts, userTodos, errorDetails)
         }
     }
     
+    // MARK: Private methods
     private func getAlbum(id: Int, result: @escaping (_ photo: PhotoConfiguration?, _ error: Error?) -> Void) {
                 
         JSONPlaceholderAPI.getUserFirstAlbum(id) { [weak self] (albumResponseData, error) in
