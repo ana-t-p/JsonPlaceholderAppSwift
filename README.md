@@ -34,6 +34,9 @@ Just open the *.xcproject* file and run it in a simulator. No need to install *p
 ## Usage
 The first scene shows a picker which lets you to select one person. Then, if you push the button below, it will navigate to the second scene, which displays an image, personal information (name, surnames, email, telephone) and a post collection of the user. Also a button will be unhidden if the user has a TODO list. If you push this button, it will appear a table (third scene) with the list. 
 
+## Demo
+![JsonPlaceholderAppSwift demo](Demo/demo.gif)
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
