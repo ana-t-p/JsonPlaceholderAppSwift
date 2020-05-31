@@ -11,7 +11,7 @@
 		D83A702B248020AD001ED298 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A702A248020AD001ED298 /* SceneDelegate.swift */; };
 		D83A7032248020AE001ED298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D83A7031248020AE001ED298 /* Assets.xcassets */; };
 		D83A7035248020AE001ED298 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D83A7033248020AE001ED298 /* LaunchScreen.storyboard */; };
-		D83A7040248020AE001ED298 /* JsonPlaceholderAppSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A703F248020AE001ED298 /* JsonPlaceholderAppSwiftTests.swift */; };
+		D83A7040248020AE001ED298 /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A703F248020AE001ED298 /* XCTestExtension.swift */; };
 		D83A7052248027C8001ED298 /* JSONPlaceholderAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A7051248027C8001ED298 /* JSONPlaceholderAPI.swift */; };
 		D83A705424802883001ED298 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A705324802883001ED298 /* Constants.swift */; };
 		D83A705C24804DAE001ED298 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A705624804DAE001ED298 /* HomePresenter.swift */; };
@@ -48,6 +48,10 @@
 		D8B4EF0D2482B201008E3C82 /* TodoListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B4EF0B2482B201008E3C82 /* TodoListTableViewCell.xib */; };
 		D8B4EF0F24832CF0008E3C82 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EF0E24832CF0008E3C82 /* UILabelExtension.swift */; };
 		D8B4EF1224832EA7008E3C82 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EF1124832EA7008E3C82 /* UIButtonExtension.swift */; };
+		D8B4EF19248341B7008E3C82 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EF15248341B7008E3C82 /* HomeViewControllerTests.swift */; };
+		D8B4EF1A248341B7008E3C82 /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EF16248341B7008E3C82 /* HomeInteractorTests.swift */; };
+		D8B4EF1B248341B7008E3C82 /* HomeWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EF17248341B7008E3C82 /* HomeWorkerTests.swift */; };
+		D8B4EF1C248341B7008E3C82 /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B4EF18248341B7008E3C82 /* HomePresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +72,7 @@
 		D83A7034248020AE001ED298 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D83A7036248020AE001ED298 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D83A703B248020AE001ED298 /* JsonPlaceholderAppSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JsonPlaceholderAppSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D83A703F248020AE001ED298 /* JsonPlaceholderAppSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonPlaceholderAppSwiftTests.swift; sourceTree = "<group>"; };
+		D83A703F248020AE001ED298 /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
 		D83A7041248020AE001ED298 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D83A7051248027C8001ED298 /* JSONPlaceholderAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPlaceholderAPI.swift; sourceTree = "<group>"; };
 		D83A705324802883001ED298 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -106,6 +110,10 @@
 		D8B4EF0B2482B201008E3C82 /* TodoListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoListTableViewCell.xib; sourceTree = "<group>"; };
 		D8B4EF0E24832CF0008E3C82 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		D8B4EF1124832EA7008E3C82 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		D8B4EF15248341B7008E3C82 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		D8B4EF16248341B7008E3C82 /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
+		D8B4EF17248341B7008E3C82 /* HomeWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorkerTests.swift; sourceTree = "<group>"; };
+		D8B4EF18248341B7008E3C82 /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +164,8 @@
 		D83A703E248020AE001ED298 /* JsonPlaceholderAppSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				D83A703F248020AE001ED298 /* JsonPlaceholderAppSwiftTests.swift */,
+				D8B4EF132483418E008E3C82 /* Scenes */,
+				D83A703F248020AE001ED298 /* XCTestExtension.swift */,
 				D83A7041248020AE001ED298 /* Info.plist */,
 			);
 			path = JsonPlaceholderAppSwiftTests;
@@ -321,6 +330,25 @@
 			path = "cell view";
 			sourceTree = "<group>";
 		};
+		D8B4EF132483418E008E3C82 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D8B4EF142483419D008E3C82 /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D8B4EF142483419D008E3C82 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D8B4EF15248341B7008E3C82 /* HomeViewControllerTests.swift */,
+				D8B4EF16248341B7008E3C82 /* HomeInteractorTests.swift */,
+				D8B4EF17248341B7008E3C82 /* HomeWorkerTests.swift */,
+				D8B4EF18248341B7008E3C82 /* HomePresenterTests.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,7 +494,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D83A7040248020AE001ED298 /* JsonPlaceholderAppSwiftTests.swift in Sources */,
+				D8B4EF1A248341B7008E3C82 /* HomeInteractorTests.swift in Sources */,
+				D83A7040248020AE001ED298 /* XCTestExtension.swift in Sources */,
+				D8B4EF1B248341B7008E3C82 /* HomeWorkerTests.swift in Sources */,
+				D8B4EF1C248341B7008E3C82 /* HomePresenterTests.swift in Sources */,
+				D8B4EF19248341B7008E3C82 /* HomeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
